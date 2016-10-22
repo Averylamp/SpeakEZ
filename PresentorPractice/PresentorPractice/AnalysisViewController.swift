@@ -99,7 +99,7 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall {
     var lastLabel: LTMorphingLabel? = nil
     
     func addStringToTotalText(string: String){
-        fullText += string
+        fullText += " " + string
         if lastLabel == nil{
             
             lastLabel = LTMorphingLabel(frame: CGRect(x: 20, y: 0, width: self.view.frame.width - 40, height: 26))
@@ -171,6 +171,9 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall {
                 shouldEnd = true
                 button.backgroundColor = UIColor(red: 0.0 / 254.0, green: 126.0 / 255.0, blue: 11.0/255.0, alpha: 1.0)
                 button.setTitle("Start", for: .normal)
+                if speechAnalyzer.inProgress == false{
+                    startTextAnalysis()
+                }
             }
             
         }
@@ -200,13 +203,30 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall {
     func errorRecieved(_ error: String!) {
         partialTextLabel.text = error
         if !shouldEnd{
-            speechAnalyzer.startButton_Click(nil)
+            self.delay(1.0, closure: {
+                self.speechAnalyzer.startButton_Click(nil)
+            })
         }else{
+            
             startTextAnalysis()
         }
     }
     
+    var progressHUD = MBProgressHUD()
+    
     func startTextAnalysis(){
+        
+        progressHUD = MBProgressHUD.showAdded(to: self.view, animated: true)
+        progressHUD.mode = .indeterminate
+        progressHUD.label.text = "Analyzing your speech"
+        progressHUD.bezelView.color = UIColor(white: 1.0, alpha: 1.0)
+        progressHUD.label.textColor = UIColor.darkGray
+        progressHUD.detailsLabel.text = "Please wait a moment"
+        progressHUD.detailsLabel.textColor = UIColor.darkGray
+        progressHUD.activityIndicatorColor = UIColor.darkGray
+        progressHUD.dimBackground = true
+        
+        print("Full text - \(fullText)")
         
     }
     /*

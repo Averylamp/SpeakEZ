@@ -313,6 +313,7 @@ NSString* ConvertSpeechErrorToString(int errorCode);
             
             if (buffer != nil && bytesRead != 0) {
                 // Send of audio data to service.
+                NSLog(@"Sending Audio");
                 [dataClient sendAudio:(buffer)
                            withLength:(bytesRead)];
             }
@@ -322,6 +323,7 @@ NSString* ConvertSpeechErrorToString(int errorCode);
         NSLog(@"%@", ex);
     }
     @finally {
+        NSLog(@"Ending Audio");
         [dataClient endAudio];
         if (fileHandle != nil) {
             [fileHandle closeFile];
@@ -341,6 +343,7 @@ NSString* ConvertSpeechErrorToString(int errorCode);
         // we got the final result, so it we can end the mic reco.  No need to do this
         // for dataReco, since we already called endAudio on it as soon as we were done
         // sending all the data.
+        NSLog(@"ENDING ALL AUDIO");
         [micClient endMicAndRecognition];
     }
     
@@ -367,10 +370,16 @@ NSString* ConvertSpeechErrorToString(int errorCode);
                                         phrase.DisplayText]);
                 if (self.delegate != nil) {
                     self.inProgress = NO;
+                    NSLog(@"SENDING FINAL RECOG TO DELEGATE");
                     [self.delegate finalRecognitionRecieved:phrase];
                 }
             }
             if ([response.RecognizedPhrase count] == 0){
+                self.inProgress = NO;
+                NSLog(@"SENDING ERROR TO DELEGATE");
+                [micClient endMicAndRecognition];
+                micClient = nil;
+                
                 [self.delegate errorRecieved: @"Unable to Recognize"];
             }
             

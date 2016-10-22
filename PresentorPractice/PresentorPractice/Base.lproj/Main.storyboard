@@ -318,6 +318,55 @@
             </objects>
             <point key="canvasLocation" x="2424.8000000000002" y="37.331334332833585"/>
         </scene>
+        <!--Speech Results View Controller-->
+        <scene sceneID="6tM-8F-l1d">
+            <objects>
+                <viewController storyboardIdentifier="SpeechResultsVC" id="1dU-v0-IBN" customClass="SpeechResultsViewController" customModule="PresentorPractice" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wqo-tw-pOe"/>
+                        <viewControllerLayoutGuide type="bottom" id="N1M-Z2-Ub2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4HW-Hp-PMX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Well Done!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGR-8q-9Cf">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="1i6-f1-Ved"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Panton-SemiBold" family="Panton" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hUz-pf-cT1">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Great Speech!  Your total speech time is: 2 Minutes 52 Seconds  You used filler words like: Um - 3 time(s)
+Like - 0 time(s)
+Uh - 1 time(s)
+
+Some of your favorite words include:
+
+</string>
+                                <fontDescription key="fontDescription" name="Panton-Regular" family="Panton" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="hUz-pf-cT1" firstAttribute="centerX" secondItem="4HW-Hp-PMX" secondAttribute="centerX" id="2Bh-xs-9kO"/>
+                            <constraint firstItem="hUz-pf-cT1" firstAttribute="width" secondItem="4HW-Hp-PMX" secondAttribute="width" multiplier="0.9" id="GHX-Ig-nrJ"/>
+                            <constraint firstItem="hUz-pf-cT1" firstAttribute="top" secondItem="nGR-8q-9Cf" secondAttribute="bottom" constant="30" id="WJs-N1-Ur5"/>
+                            <constraint firstItem="nGR-8q-9Cf" firstAttribute="top" secondItem="wqo-tw-pOe" secondAttribute="bottom" constant="10" id="Wxs-Lu-xEn"/>
+                            <constraint firstItem="nGR-8q-9Cf" firstAttribute="width" secondItem="4HW-Hp-PMX" secondAttribute="width" multiplier="0.8" id="hSY-6z-75J"/>
+                            <constraint firstItem="nGR-8q-9Cf" firstAttribute="centerX" secondItem="4HW-Hp-PMX" secondAttribute="centerX" id="pBu-NF-4cw"/>
+                            <constraint firstItem="N1M-Z2-Ub2" firstAttribute="top" secondItem="hUz-pf-cT1" secondAttribute="bottom" constant="20" id="u27-rG-X7U"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="9Zx-6i-MJj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uuk-xx-8mu" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3164" y="37"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bg" width="750" height="1334"/>

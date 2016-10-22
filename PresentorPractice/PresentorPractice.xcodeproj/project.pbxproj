@@ -52,6 +52,8 @@
 		BB15D0941DBB5A560044C1C6 /* SpeechController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0931DBB5A560044C1C6 /* SpeechController.mm */; };
 		BB15D0951DBB5D9C0044C1C6 /* SpeechSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB15D08D1DBB594B0044C1C6 /* SpeechSDK.framework */; };
 		BB15D0961DBB5D9C0044C1C6 /* SpeechSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB15D08D1DBB594B0044C1C6 /* SpeechSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BB8642DF1DBBEA8F00B00D11 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8642DE1DBBEA8F00B00D11 /* MBProgressHUD.m */; };
+		BB8642E11DBBFBFB00B00D11 /* SpeechResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8642E01DBBFBFB00B00D11 /* SpeechResultsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +142,9 @@
 		BB15D08D1DBB594B0044C1C6 /* SpeechSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechSDK.framework; path = PresentorPractice/SpeechSDK.framework; sourceTree = "<group>"; };
 		BB15D0921DBB5A560044C1C6 /* SpeechController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechController.h; sourceTree = "<group>"; };
 		BB15D0931DBB5A560044C1C6 /* SpeechController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SpeechController.mm; sourceTree = "<group>"; };
+		BB8642DD1DBBEA8F00B00D11 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		BB8642DE1DBBEA8F00B00D11 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		BB8642E01DBBFBFB00B00D11 /* SpeechResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechResultsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,10 +207,13 @@
 				BB15D0131DBB2BE30044C1C6 /* ModeViewController.swift */,
 				BB15D0151DBB2FE80044C1C6 /* AnalysisViewController.swift */,
 				BB15CFC21DBB13E90044C1C6 /* Main.storyboard */,
+				BB8642E01DBBFBFB00B00D11 /* SpeechResultsViewController.swift */,
 				BB15CFC81DBB13E90044C1C6 /* Assets.xcassets */,
 				BB15CFCA1DBB13E90044C1C6 /* LaunchScreen.storyboard */,
 				BB15D0921DBB5A560044C1C6 /* SpeechController.h */,
 				BB15D0931DBB5A560044C1C6 /* SpeechController.mm */,
+				BB8642DD1DBBEA8F00B00D11 /* MBProgressHUD.h */,
+				BB8642DE1DBBEA8F00B00D11 /* MBProgressHUD.m */,
 				BB15CFCD1DBB13E90044C1C6 /* Info.plist */,
 				BB15D08B1DBB59020044C1C6 /* settings.plist */,
 				BB15CFFA1DBB22180044C1C6 /* Panton Font */,
@@ -469,6 +477,7 @@
 				BB15CFBB1DBB13E90044C1C6 /* main.m in Sources */,
 				BB15D0761DBB30A40044C1C6 /* LTEasing.swift in Sources */,
 				BB15D0941DBB5A560044C1C6 /* SpeechController.mm in Sources */,
+				BB8642DF1DBBEA8F00B00D11 /* MBProgressHUD.m in Sources */,
 				BB15D07A1DBB30A40044C1C6 /* LTMorphingLabel+Burn.swift in Sources */,
 				BB15D0801DBB30A40044C1C6 /* LTStringDiffResult.swift in Sources */,
 				BB15CFC71DBB13E90044C1C6 /* PresentorPractice.xcdatamodeld in Sources */,
@@ -476,6 +485,7 @@
 				BB15D0751DBB30A40044C1C6 /* LTCharacterLimbo.swift in Sources */,
 				BB15D07B1DBB30A40044C1C6 /* LTMorphingLabel+Evaporate.swift in Sources */,
 				BB15D0771DBB30A40044C1C6 /* LTEmitterView.swift in Sources */,
+				BB8642E11DBBFBFB00B00D11 /* SpeechResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,6 +742,7 @@
 				BB15CFE81DBB13EA0044C1C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BB15CFE91DBB13EA0044C1C6 /* Build configuration list for PBXNativeTarget "PresentorPracticeTests" */ = {
 			isa = XCConfigurationList;
@@ -740,6 +751,7 @@
 				BB15CFEB1DBB13EA0044C1C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BB15CFEC1DBB13EA0044C1C6 /* Build configuration list for PBXNativeTarget "PresentorPracticeUITests" */ = {
 			isa = XCConfigurationList;
@@ -748,6 +760,7 @@
 				BB15CFEE1DBB13EA0044C1C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
