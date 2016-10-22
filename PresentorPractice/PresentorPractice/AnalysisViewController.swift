@@ -49,12 +49,18 @@ class AnalysisViewController: UIViewController {
             case State.Freestyle:
                 self.titleLabel.text = "You choose Freestyle"
             }
-            var myUtterance : AVSpeechUtterance
-            myUtterance = AVSpeechUtterance(string: self.titleLabel.text)
-            myUtterance.voice = AVSpeechSynthesisVoice(language: speechSettings.language.rawValue)
-            myUtterance.rate = Float(speechSettings.rate.rawValue)!
+            var choiceUtterance : AVSpeechUtterance
+            choiceUtterance = AVSpeechUtterance(string: self.titleLabel.text)
+            choiceUtterance.voice = AVSpeechSynthesisVoice(language: speechSettings.language.rawValue)
+            choiceUtterance.rate = Float(speechSettings.rate.rawValue)!
             
-            self.synth.speak(myUtterance)
+            self.synth.speak(choiceUtterance)
+            
+            var readyToStart: AVSpeechUtterance
+            readyToStart = AVSpeechUtterance(string: "Please click the green button then start when you are ready.")
+            readyToStart.voice = AVSpeechSynthesisVoice(language: speechSettings.language.rawValue)
+            readyToStart.rate = Float(speechSettings.rate.rawValue)!
+            
             
             if self.state == State.Interview{
                 self.delay(2.5, closure: {
@@ -63,12 +69,21 @@ class AnalysisViewController: UIViewController {
                     interviewUtterance.voice = AVSpeechSynthesisVoice(language: speechSettings.language.rawValue)
                     interviewUtterance.rate = Float(speechSettings.rate.rawValue)!
                     self.synth.speak(interviewUtterance)
-                    
+                    self.delay(8.0, closure: {
+                        self.synth.speak(readyToStart)
+                    })
+                })
+            }
+            
+            if self.state == State.Freestyle || self.state == State.Presentation {
+                self.delay(4.0, closure: {
+                    self.synth.speak(readyToStart)
                 })
             }
         }
         // Do any additional setup after loading the view.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -82,6 +97,7 @@ class AnalysisViewController: UIViewController {
     var lastLabel: LTMorphingLabel? = nil
     
     func addStringToTotalText(string: String){
+        fullText += string
         if lastLabel == nil{
             
             lastLabel = LTMorphingLabel(frame: CGRect(x: 20, y: 0, width: self.view.frame.width - 40, height: 26))

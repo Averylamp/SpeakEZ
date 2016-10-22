@@ -47,6 +47,10 @@
 		BB15D0821DBB30A40044C1C6 /* Fragment.png in Resources */ = {isa = PBXBuildFile; fileRef = BB15D0701DBB30A40044C1C6 /* Fragment.png */; };
 		BB15D0831DBB30A40044C1C6 /* Smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = BB15D0711DBB30A40044C1C6 /* Smoke.png */; };
 		BB15D0841DBB30A40044C1C6 /* Sparkle.png in Resources */ = {isa = PBXBuildFile; fileRef = BB15D0721DBB30A40044C1C6 /* Sparkle.png */; };
+		BB15D0861DBB588B0044C1C6 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB15D0851DBB588B0044C1C6 /* CoreAudio.framework */; };
+		BB15D0881DBB58920044C1C6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB15D0871DBB58920044C1C6 /* AudioToolbox.framework */; };
+		BB15D08C1DBB59020044C1C6 /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB15D08B1DBB59020044C1C6 /* settings.plist */; };
+		BB15D08E1DBB594B0044C1C6 /* SpeechSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB15D08D1DBB594B0044C1C6 /* SpeechSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +121,11 @@
 		BB15D0701DBB30A40044C1C6 /* Fragment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fragment.png; sourceTree = "<group>"; };
 		BB15D0711DBB30A40044C1C6 /* Smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Smoke.png; sourceTree = "<group>"; };
 		BB15D0721DBB30A40044C1C6 /* Sparkle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparkle.png; sourceTree = "<group>"; };
+		BB15D0851DBB588B0044C1C6 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		BB15D0871DBB58920044C1C6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		BB15D0891DBB58B50044C1C6 /* SpeechSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechSDK.framework; path = "../../../../../Downloads/Cognitive-Speech-STT-iOS-master/iPhoneOS/SpeechSDK.framework"; sourceTree = "<group>"; };
+		BB15D08B1DBB59020044C1C6 /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
+		BB15D08D1DBB594B0044C1C6 /* SpeechSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechSDK.framework; path = PresentorPractice/SpeechSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +133,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB15D08E1DBB594B0044C1C6 /* SpeechSDK.framework in Frameworks */,
+				BB15D0881DBB58920044C1C6 /* AudioToolbox.framework in Frameworks */,
+				BB15D0861DBB588B0044C1C6 /* CoreAudio.framework in Frameworks */,
 				BB15D0121DBB2AB00044C1C6 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,6 +193,7 @@
 				BB15CFC81DBB13E90044C1C6 /* Assets.xcassets */,
 				BB15CFCA1DBB13E90044C1C6 /* LaunchScreen.storyboard */,
 				BB15CFCD1DBB13E90044C1C6 /* Info.plist */,
+				BB15D08B1DBB59020044C1C6 /* settings.plist */,
 				BB15CFFA1DBB22180044C1C6 /* Panton Font */,
 				BB15CFC51DBB13E90044C1C6 /* PresentorPractice.xcdatamodeld */,
 				BB15CFB91DBB13E90044C1C6 /* Supporting Files */,
@@ -234,6 +247,10 @@
 		BB15D0101DBB2AB00044C1C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB15D08D1DBB594B0044C1C6 /* SpeechSDK.framework */,
+				BB15D0891DBB58B50044C1C6 /* SpeechSDK.framework */,
+				BB15D0871DBB58920044C1C6 /* AudioToolbox.framework */,
+				BB15D0851DBB588B0044C1C6 /* CoreAudio.framework */,
 				BB15D0111DBB2AB00044C1C6 /* AVFoundation.framework */,
 			);
 			name = Frameworks;
@@ -384,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB15D0071DBB22180044C1C6 /* Panton-ExtraLight.otf in Resources */,
+				BB15D08C1DBB59020044C1C6 /* settings.plist in Resources */,
 				BB15D0081DBB22180044C1C6 /* Panton-Heavy.otf in Resources */,
 				BB15D0091DBB22180044C1C6 /* Panton-Light.otf in Resources */,
 				BB15CFCC1DBB13E90044C1C6 /* LaunchScreen.storyboard in Resources */,
@@ -592,6 +610,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 9XWYL3K4YT;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PresentorPractice",
+				);
 				INFOPLIST_FILE = PresentorPractice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Isometric.PresentorPractice;
@@ -608,6 +630,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 9XWYL3K4YT;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PresentorPractice",
+				);
 				INFOPLIST_FILE = PresentorPractice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Isometric.PresentorPractice;
