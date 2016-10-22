@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BB15CFBB1DBB13E90044C1C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB15CFBA1DBB13E90044C1C6 /* main.m */; };
 		BB15CFBE1DBB13E90044C1C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB15CFBD1DBB13E90044C1C6 /* AppDelegate.m */; };
-		BB15CFC11DBB13E90044C1C6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB15CFC01DBB13E90044C1C6 /* ViewController.m */; };
 		BB15CFC41DBB13E90044C1C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB15CFC21DBB13E90044C1C6 /* Main.storyboard */; };
 		BB15CFC71DBB13E90044C1C6 /* PresentorPractice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB15CFC51DBB13E90044C1C6 /* PresentorPractice.xcdatamodeld */; };
 		BB15CFC91DBB13E90044C1C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB15CFC81DBB13E90044C1C6 /* Assets.xcassets */; };
@@ -50,7 +49,9 @@
 		BB15D0861DBB588B0044C1C6 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB15D0851DBB588B0044C1C6 /* CoreAudio.framework */; };
 		BB15D0881DBB58920044C1C6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB15D0871DBB58920044C1C6 /* AudioToolbox.framework */; };
 		BB15D08C1DBB59020044C1C6 /* settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB15D08B1DBB59020044C1C6 /* settings.plist */; };
-		BB15D08E1DBB594B0044C1C6 /* SpeechSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB15D08D1DBB594B0044C1C6 /* SpeechSDK.framework */; };
+		BB15D0941DBB5A560044C1C6 /* SpeechController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0931DBB5A560044C1C6 /* SpeechController.mm */; };
+		BB15D0951DBB5D9C0044C1C6 /* SpeechSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB15D08D1DBB594B0044C1C6 /* SpeechSDK.framework */; };
+		BB15D0961DBB5D9C0044C1C6 /* SpeechSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB15D08D1DBB594B0044C1C6 /* SpeechSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,13 +71,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BB15D0971DBB5D9C0044C1C6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BB15D0961DBB5D9C0044C1C6 /* SpeechSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		BB15CFB61DBB13E90044C1C6 /* PresentorPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PresentorPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB15CFBA1DBB13E90044C1C6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BB15CFBC1DBB13E90044C1C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BB15CFBD1DBB13E90044C1C6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BB15CFBF1DBB13E90044C1C6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		BB15CFC01DBB13E90044C1C6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BB15CFC31DBB13E90044C1C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BB15CFC61DBB13E90044C1C6 /* PresentorPractice.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PresentorPractice.xcdatamodel; sourceTree = "<group>"; };
 		BB15CFC81DBB13E90044C1C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -123,9 +136,10 @@
 		BB15D0721DBB30A40044C1C6 /* Sparkle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparkle.png; sourceTree = "<group>"; };
 		BB15D0851DBB588B0044C1C6 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		BB15D0871DBB58920044C1C6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		BB15D0891DBB58B50044C1C6 /* SpeechSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechSDK.framework; path = "../../../../../Downloads/Cognitive-Speech-STT-iOS-master/iPhoneOS/SpeechSDK.framework"; sourceTree = "<group>"; };
 		BB15D08B1DBB59020044C1C6 /* settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = settings.plist; sourceTree = "<group>"; };
 		BB15D08D1DBB594B0044C1C6 /* SpeechSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechSDK.framework; path = PresentorPractice/SpeechSDK.framework; sourceTree = "<group>"; };
+		BB15D0921DBB5A560044C1C6 /* SpeechController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechController.h; sourceTree = "<group>"; };
+		BB15D0931DBB5A560044C1C6 /* SpeechController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SpeechController.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,8 +147,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB15D08E1DBB594B0044C1C6 /* SpeechSDK.framework in Frameworks */,
 				BB15D0881DBB58920044C1C6 /* AudioToolbox.framework in Frameworks */,
+				BB15D0951DBB5D9C0044C1C6 /* SpeechSDK.framework in Frameworks */,
 				BB15D0861DBB588B0044C1C6 /* CoreAudio.framework in Frameworks */,
 				BB15D0121DBB2AB00044C1C6 /* AVFoundation.framework in Frameworks */,
 			);
@@ -184,14 +198,14 @@
 				BB15D05E1DBB30A40044C1C6 /* LTMorphingLabel */,
 				BB15CFBC1DBB13E90044C1C6 /* AppDelegate.h */,
 				BB15CFBD1DBB13E90044C1C6 /* AppDelegate.m */,
-				BB15CFBF1DBB13E90044C1C6 /* ViewController.h */,
-				BB15CFC01DBB13E90044C1C6 /* ViewController.m */,
 				BB15D00E1DBB2A490044C1C6 /* SplashViewController.swift */,
 				BB15D0131DBB2BE30044C1C6 /* ModeViewController.swift */,
 				BB15D0151DBB2FE80044C1C6 /* AnalysisViewController.swift */,
 				BB15CFC21DBB13E90044C1C6 /* Main.storyboard */,
 				BB15CFC81DBB13E90044C1C6 /* Assets.xcassets */,
 				BB15CFCA1DBB13E90044C1C6 /* LaunchScreen.storyboard */,
+				BB15D0921DBB5A560044C1C6 /* SpeechController.h */,
+				BB15D0931DBB5A560044C1C6 /* SpeechController.mm */,
 				BB15CFCD1DBB13E90044C1C6 /* Info.plist */,
 				BB15D08B1DBB59020044C1C6 /* settings.plist */,
 				BB15CFFA1DBB22180044C1C6 /* Panton Font */,
@@ -248,7 +262,6 @@
 			isa = PBXGroup;
 			children = (
 				BB15D08D1DBB594B0044C1C6 /* SpeechSDK.framework */,
-				BB15D0891DBB58B50044C1C6 /* SpeechSDK.framework */,
 				BB15D0871DBB58920044C1C6 /* AudioToolbox.framework */,
 				BB15D0851DBB588B0044C1C6 /* CoreAudio.framework */,
 				BB15D0111DBB2AB00044C1C6 /* AVFoundation.framework */,
@@ -300,6 +313,7 @@
 				BB15CFB21DBB13E90044C1C6 /* Sources */,
 				BB15CFB31DBB13E90044C1C6 /* Frameworks */,
 				BB15CFB41DBB13E90044C1C6 /* Resources */,
+				BB15D0971DBB5D9C0044C1C6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -442,7 +456,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB15CFC11DBB13E90044C1C6 /* ViewController.m in Sources */,
 				BB15D07F1DBB30A40044C1C6 /* LTMorphingLabel.swift in Sources */,
 				BB15D0141DBB2BE30044C1C6 /* ModeViewController.swift in Sources */,
 				BB15D07D1DBB30A40044C1C6 /* LTMorphingLabel+Pixelate.swift in Sources */,
@@ -455,6 +468,7 @@
 				BB15D07E1DBB30A40044C1C6 /* LTMorphingLabel+Sparkle.swift in Sources */,
 				BB15CFBB1DBB13E90044C1C6 /* main.m in Sources */,
 				BB15D0761DBB30A40044C1C6 /* LTEasing.swift in Sources */,
+				BB15D0941DBB5A560044C1C6 /* SpeechController.mm in Sources */,
 				BB15D07A1DBB30A40044C1C6 /* LTMorphingLabel+Burn.swift in Sources */,
 				BB15D0801DBB30A40044C1C6 /* LTStringDiffResult.swift in Sources */,
 				BB15CFC71DBB13E90044C1C6 /* PresentorPractice.xcdatamodeld in Sources */,
@@ -610,6 +624,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 9XWYL3K4YT;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PresentorPractice",
@@ -630,6 +645,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 9XWYL3K4YT;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PresentorPractice",

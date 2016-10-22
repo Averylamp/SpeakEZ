@@ -55,5 +55,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>For Speech Analytics</string>
 </dict>
 </plist>

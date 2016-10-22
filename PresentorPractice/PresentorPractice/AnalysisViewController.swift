@@ -81,6 +81,11 @@ class AnalysisViewController: UIViewController {
                 })
             }
         }
+        delay(10.0) { 
+            print("Starting Mic")
+            let vc = SpeechController()
+            vc.startButton_Click(nil)
+        }
         // Do any additional setup after loading the view.
     }
     
