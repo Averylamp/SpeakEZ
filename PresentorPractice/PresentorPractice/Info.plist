@@ -20,6 +20,29 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Panton-Heavy.otf</string>
+		<string>Panton-SemiBold.otf</string>
+		<string>Panton-Black.otf</string>
+		<string>Panton-Bold.otf</string>
+		<string>Panton-ExtraBold.otf</string>
+		<string>Panton-ExtraLight.otf</string>
+		<string>Panton-Light.otf</string>
+		<string>Panton-Regular.otf</string>
+		<string>Panton-Thin.otf</string>
+		<string>ADAM.CG PRO.otf</string>
+		<string>SummitThin-Display.otf</string>
+		<string>Lato-Regular.ttf</string>
+		<string>Lato-Medium.ttf</string>
+		<string>Lato-Light.ttf</string>
+		<string>Lato-Semibold.ttf</string>
+		<string>Lato-Thin.ttf</string>
+		<string>Lato-Hairline.ttf</string>
+		<string>MavenProLight-100.otf</string>
+		<string>MavenProLight-200.otf</string>
+		<string>MavenProLight-300.otf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -31,8 +54,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 </dict>
 </plist>

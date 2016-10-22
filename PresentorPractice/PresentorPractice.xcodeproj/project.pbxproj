@@ -16,6 +16,37 @@
 		BB15CFCC1DBB13E90044C1C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB15CFCA1DBB13E90044C1C6 /* LaunchScreen.storyboard */; };
 		BB15CFD71DBB13EA0044C1C6 /* PresentorPracticeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB15CFD61DBB13EA0044C1C6 /* PresentorPracticeTests.m */; };
 		BB15CFE21DBB13EA0044C1C6 /* PresentorPracticeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB15CFE11DBB13EA0044C1C6 /* PresentorPracticeUITests.m */; };
+		BB15D0041DBB22180044C1C6 /* Panton-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB15CFFB1DBB22180044C1C6 /* Panton-Black.otf */; };
+		BB15D0051DBB22180044C1C6 /* Panton-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB15CFFC1DBB22180044C1C6 /* Panton-Bold.otf */; };
+		BB15D0061DBB22180044C1C6 /* Panton-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB15CFFD1DBB22180044C1C6 /* Panton-ExtraBold.otf */; };
+		BB15D0071DBB22180044C1C6 /* Panton-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB15CFFE1DBB22180044C1C6 /* Panton-ExtraLight.otf */; };
+		BB15D0081DBB22180044C1C6 /* Panton-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB15CFFF1DBB22180044C1C6 /* Panton-Heavy.otf */; };
+		BB15D0091DBB22180044C1C6 /* Panton-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB15D0001DBB22180044C1C6 /* Panton-Light.otf */; };
+		BB15D00A1DBB22180044C1C6 /* Panton-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB15D0011DBB22180044C1C6 /* Panton-Regular.otf */; };
+		BB15D00B1DBB22180044C1C6 /* Panton-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB15D0021DBB22180044C1C6 /* Panton-SemiBold.otf */; };
+		BB15D00C1DBB22180044C1C6 /* Panton-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = BB15D0031DBB22180044C1C6 /* Panton-Thin.otf */; };
+		BB15D00F1DBB2A490044C1C6 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D00E1DBB2A490044C1C6 /* SplashViewController.swift */; };
+		BB15D0121DBB2AB00044C1C6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB15D0111DBB2AB00044C1C6 /* AVFoundation.framework */; };
+		BB15D0141DBB2BE30044C1C6 /* ModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0131DBB2BE30044C1C6 /* ModeViewController.swift */; };
+		BB15D0161DBB2FE80044C1C6 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0151DBB2FE80044C1C6 /* AnalysisViewController.swift */; };
+		BB15D0731DBB30A40044C1C6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB15D05F1DBB30A40044C1C6 /* Info.plist */; };
+		BB15D0741DBB30A40044C1C6 /* LTCharacterDiffResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0601DBB30A40044C1C6 /* LTCharacterDiffResult.swift */; };
+		BB15D0751DBB30A40044C1C6 /* LTCharacterLimbo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0611DBB30A40044C1C6 /* LTCharacterLimbo.swift */; };
+		BB15D0761DBB30A40044C1C6 /* LTEasing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0621DBB30A40044C1C6 /* LTEasing.swift */; };
+		BB15D0771DBB30A40044C1C6 /* LTEmitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0631DBB30A40044C1C6 /* LTEmitterView.swift */; };
+		BB15D0781DBB30A40044C1C6 /* LTMorphingEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0641DBB30A40044C1C6 /* LTMorphingEffect.swift */; };
+		BB15D0791DBB30A40044C1C6 /* LTMorphingLabel+Anvil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0651DBB30A40044C1C6 /* LTMorphingLabel+Anvil.swift */; };
+		BB15D07A1DBB30A40044C1C6 /* LTMorphingLabel+Burn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0661DBB30A40044C1C6 /* LTMorphingLabel+Burn.swift */; };
+		BB15D07B1DBB30A40044C1C6 /* LTMorphingLabel+Evaporate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0671DBB30A40044C1C6 /* LTMorphingLabel+Evaporate.swift */; };
+		BB15D07C1DBB30A40044C1C6 /* LTMorphingLabel+Fall.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0681DBB30A40044C1C6 /* LTMorphingLabel+Fall.swift */; };
+		BB15D07D1DBB30A40044C1C6 /* LTMorphingLabel+Pixelate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0691DBB30A40044C1C6 /* LTMorphingLabel+Pixelate.swift */; };
+		BB15D07E1DBB30A40044C1C6 /* LTMorphingLabel+Sparkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D06A1DBB30A40044C1C6 /* LTMorphingLabel+Sparkle.swift */; };
+		BB15D07F1DBB30A40044C1C6 /* LTMorphingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D06C1DBB30A40044C1C6 /* LTMorphingLabel.swift */; };
+		BB15D0801DBB30A40044C1C6 /* LTStringDiffResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D06D1DBB30A40044C1C6 /* LTStringDiffResult.swift */; };
+		BB15D0811DBB30A40044C1C6 /* Fire.png in Resources */ = {isa = PBXBuildFile; fileRef = BB15D06F1DBB30A40044C1C6 /* Fire.png */; };
+		BB15D0821DBB30A40044C1C6 /* Fragment.png in Resources */ = {isa = PBXBuildFile; fileRef = BB15D0701DBB30A40044C1C6 /* Fragment.png */; };
+		BB15D0831DBB30A40044C1C6 /* Smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = BB15D0711DBB30A40044C1C6 /* Smoke.png */; };
+		BB15D0841DBB30A40044C1C6 /* Sparkle.png in Resources */ = {isa = PBXBuildFile; fileRef = BB15D0721DBB30A40044C1C6 /* Sparkle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +84,39 @@
 		BB15CFDD1DBB13EA0044C1C6 /* PresentorPracticeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresentorPracticeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB15CFE11DBB13EA0044C1C6 /* PresentorPracticeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PresentorPracticeUITests.m; sourceTree = "<group>"; };
 		BB15CFE31DBB13EA0044C1C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB15CFFB1DBB22180044C1C6 /* Panton-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-Black.otf"; sourceTree = "<group>"; };
+		BB15CFFC1DBB22180044C1C6 /* Panton-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-Bold.otf"; sourceTree = "<group>"; };
+		BB15CFFD1DBB22180044C1C6 /* Panton-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-ExtraBold.otf"; sourceTree = "<group>"; };
+		BB15CFFE1DBB22180044C1C6 /* Panton-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-ExtraLight.otf"; sourceTree = "<group>"; };
+		BB15CFFF1DBB22180044C1C6 /* Panton-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-Heavy.otf"; sourceTree = "<group>"; };
+		BB15D0001DBB22180044C1C6 /* Panton-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-Light.otf"; sourceTree = "<group>"; };
+		BB15D0011DBB22180044C1C6 /* Panton-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-Regular.otf"; sourceTree = "<group>"; };
+		BB15D0021DBB22180044C1C6 /* Panton-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-SemiBold.otf"; sourceTree = "<group>"; };
+		BB15D0031DBB22180044C1C6 /* Panton-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Panton-Thin.otf"; sourceTree = "<group>"; };
+		BB15D00D1DBB2A490044C1C6 /* PresentorPractice-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PresentorPractice-Bridging-Header.h"; sourceTree = "<group>"; };
+		BB15D00E1DBB2A490044C1C6 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		BB15D0111DBB2AB00044C1C6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BB15D0131DBB2BE30044C1C6 /* ModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeViewController.swift; sourceTree = "<group>"; };
+		BB15D0151DBB2FE80044C1C6 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
+		BB15D05F1DBB30A40044C1C6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB15D0601DBB30A40044C1C6 /* LTCharacterDiffResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTCharacterDiffResult.swift; sourceTree = "<group>"; };
+		BB15D0611DBB30A40044C1C6 /* LTCharacterLimbo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTCharacterLimbo.swift; sourceTree = "<group>"; };
+		BB15D0621DBB30A40044C1C6 /* LTEasing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTEasing.swift; sourceTree = "<group>"; };
+		BB15D0631DBB30A40044C1C6 /* LTEmitterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTEmitterView.swift; sourceTree = "<group>"; };
+		BB15D0641DBB30A40044C1C6 /* LTMorphingEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTMorphingEffect.swift; sourceTree = "<group>"; };
+		BB15D0651DBB30A40044C1C6 /* LTMorphingLabel+Anvil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTMorphingLabel+Anvil.swift"; sourceTree = "<group>"; };
+		BB15D0661DBB30A40044C1C6 /* LTMorphingLabel+Burn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTMorphingLabel+Burn.swift"; sourceTree = "<group>"; };
+		BB15D0671DBB30A40044C1C6 /* LTMorphingLabel+Evaporate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTMorphingLabel+Evaporate.swift"; sourceTree = "<group>"; };
+		BB15D0681DBB30A40044C1C6 /* LTMorphingLabel+Fall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTMorphingLabel+Fall.swift"; sourceTree = "<group>"; };
+		BB15D0691DBB30A40044C1C6 /* LTMorphingLabel+Pixelate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTMorphingLabel+Pixelate.swift"; sourceTree = "<group>"; };
+		BB15D06A1DBB30A40044C1C6 /* LTMorphingLabel+Sparkle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTMorphingLabel+Sparkle.swift"; sourceTree = "<group>"; };
+		BB15D06B1DBB30A40044C1C6 /* LTMorphingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTMorphingLabel.h; sourceTree = "<group>"; };
+		BB15D06C1DBB30A40044C1C6 /* LTMorphingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTMorphingLabel.swift; sourceTree = "<group>"; };
+		BB15D06D1DBB30A40044C1C6 /* LTStringDiffResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTStringDiffResult.swift; sourceTree = "<group>"; };
+		BB15D06F1DBB30A40044C1C6 /* Fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fire.png; sourceTree = "<group>"; };
+		BB15D0701DBB30A40044C1C6 /* Fragment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fragment.png; sourceTree = "<group>"; };
+		BB15D0711DBB30A40044C1C6 /* Smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Smoke.png; sourceTree = "<group>"; };
+		BB15D0721DBB30A40044C1C6 /* Sparkle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sparkle.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB15D0121DBB2AB00044C1C6 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +152,7 @@
 				BB15CFD51DBB13EA0044C1C6 /* PresentorPracticeTests */,
 				BB15CFE01DBB13EA0044C1C6 /* PresentorPracticeUITests */,
 				BB15CFB71DBB13E90044C1C6 /* Products */,
+				BB15D0101DBB2AB00044C1C6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,16 +169,22 @@
 		BB15CFB81DBB13E90044C1C6 /* PresentorPractice */ = {
 			isa = PBXGroup;
 			children = (
+				BB15D05E1DBB30A40044C1C6 /* LTMorphingLabel */,
 				BB15CFBC1DBB13E90044C1C6 /* AppDelegate.h */,
 				BB15CFBD1DBB13E90044C1C6 /* AppDelegate.m */,
 				BB15CFBF1DBB13E90044C1C6 /* ViewController.h */,
 				BB15CFC01DBB13E90044C1C6 /* ViewController.m */,
+				BB15D00E1DBB2A490044C1C6 /* SplashViewController.swift */,
+				BB15D0131DBB2BE30044C1C6 /* ModeViewController.swift */,
+				BB15D0151DBB2FE80044C1C6 /* AnalysisViewController.swift */,
 				BB15CFC21DBB13E90044C1C6 /* Main.storyboard */,
 				BB15CFC81DBB13E90044C1C6 /* Assets.xcassets */,
 				BB15CFCA1DBB13E90044C1C6 /* LaunchScreen.storyboard */,
 				BB15CFCD1DBB13E90044C1C6 /* Info.plist */,
+				BB15CFFA1DBB22180044C1C6 /* Panton Font */,
 				BB15CFC51DBB13E90044C1C6 /* PresentorPractice.xcdatamodeld */,
 				BB15CFB91DBB13E90044C1C6 /* Supporting Files */,
+				BB15D00D1DBB2A490044C1C6 /* PresentorPractice-Bridging-Header.h */,
 			);
 			path = PresentorPractice;
 			sourceTree = "<group>";
@@ -141,6 +213,64 @@
 				BB15CFE31DBB13EA0044C1C6 /* Info.plist */,
 			);
 			path = PresentorPracticeUITests;
+			sourceTree = "<group>";
+		};
+		BB15CFFA1DBB22180044C1C6 /* Panton Font */ = {
+			isa = PBXGroup;
+			children = (
+				BB15CFFB1DBB22180044C1C6 /* Panton-Black.otf */,
+				BB15CFFC1DBB22180044C1C6 /* Panton-Bold.otf */,
+				BB15CFFD1DBB22180044C1C6 /* Panton-ExtraBold.otf */,
+				BB15CFFE1DBB22180044C1C6 /* Panton-ExtraLight.otf */,
+				BB15CFFF1DBB22180044C1C6 /* Panton-Heavy.otf */,
+				BB15D0001DBB22180044C1C6 /* Panton-Light.otf */,
+				BB15D0011DBB22180044C1C6 /* Panton-Regular.otf */,
+				BB15D0021DBB22180044C1C6 /* Panton-SemiBold.otf */,
+				BB15D0031DBB22180044C1C6 /* Panton-Thin.otf */,
+			);
+			path = "Panton Font";
+			sourceTree = "<group>";
+		};
+		BB15D0101DBB2AB00044C1C6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB15D0111DBB2AB00044C1C6 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB15D05E1DBB30A40044C1C6 /* LTMorphingLabel */ = {
+			isa = PBXGroup;
+			children = (
+				BB15D05F1DBB30A40044C1C6 /* Info.plist */,
+				BB15D0601DBB30A40044C1C6 /* LTCharacterDiffResult.swift */,
+				BB15D0611DBB30A40044C1C6 /* LTCharacterLimbo.swift */,
+				BB15D0621DBB30A40044C1C6 /* LTEasing.swift */,
+				BB15D0631DBB30A40044C1C6 /* LTEmitterView.swift */,
+				BB15D0641DBB30A40044C1C6 /* LTMorphingEffect.swift */,
+				BB15D0651DBB30A40044C1C6 /* LTMorphingLabel+Anvil.swift */,
+				BB15D0661DBB30A40044C1C6 /* LTMorphingLabel+Burn.swift */,
+				BB15D0671DBB30A40044C1C6 /* LTMorphingLabel+Evaporate.swift */,
+				BB15D0681DBB30A40044C1C6 /* LTMorphingLabel+Fall.swift */,
+				BB15D0691DBB30A40044C1C6 /* LTMorphingLabel+Pixelate.swift */,
+				BB15D06A1DBB30A40044C1C6 /* LTMorphingLabel+Sparkle.swift */,
+				BB15D06B1DBB30A40044C1C6 /* LTMorphingLabel.h */,
+				BB15D06C1DBB30A40044C1C6 /* LTMorphingLabel.swift */,
+				BB15D06D1DBB30A40044C1C6 /* LTStringDiffResult.swift */,
+				BB15D06E1DBB30A40044C1C6 /* Particles */,
+			);
+			path = LTMorphingLabel;
+			sourceTree = "<group>";
+		};
+		BB15D06E1DBB30A40044C1C6 /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				BB15D06F1DBB30A40044C1C6 /* Fire.png */,
+				BB15D0701DBB30A40044C1C6 /* Fragment.png */,
+				BB15D0711DBB30A40044C1C6 /* Smoke.png */,
+				BB15D0721DBB30A40044C1C6 /* Sparkle.png */,
+			);
+			path = Particles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +341,7 @@
 					BB15CFB51DBB13E90044C1C6 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 9XWYL3K4YT;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					BB15CFD11DBB13EA0044C1C6 = {
@@ -252,9 +383,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB15D0071DBB22180044C1C6 /* Panton-ExtraLight.otf in Resources */,
+				BB15D0081DBB22180044C1C6 /* Panton-Heavy.otf in Resources */,
+				BB15D0091DBB22180044C1C6 /* Panton-Light.otf in Resources */,
 				BB15CFCC1DBB13E90044C1C6 /* LaunchScreen.storyboard in Resources */,
+				BB15D0041DBB22180044C1C6 /* Panton-Black.otf in Resources */,
+				BB15D0051DBB22180044C1C6 /* Panton-Bold.otf in Resources */,
+				BB15D00C1DBB22180044C1C6 /* Panton-Thin.otf in Resources */,
+				BB15D00B1DBB22180044C1C6 /* Panton-SemiBold.otf in Resources */,
+				BB15D0841DBB30A40044C1C6 /* Sparkle.png in Resources */,
+				BB15D00A1DBB22180044C1C6 /* Panton-Regular.otf in Resources */,
 				BB15CFC91DBB13E90044C1C6 /* Assets.xcassets in Resources */,
+				BB15D0821DBB30A40044C1C6 /* Fragment.png in Resources */,
+				BB15D0831DBB30A40044C1C6 /* Smoke.png in Resources */,
 				BB15CFC41DBB13E90044C1C6 /* Main.storyboard in Resources */,
+				BB15D0811DBB30A40044C1C6 /* Fire.png in Resources */,
+				BB15D0061DBB22180044C1C6 /* Panton-ExtraBold.otf in Resources */,
+				BB15D0731DBB30A40044C1C6 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,9 +425,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB15CFC11DBB13E90044C1C6 /* ViewController.m in Sources */,
+				BB15D07F1DBB30A40044C1C6 /* LTMorphingLabel.swift in Sources */,
+				BB15D0141DBB2BE30044C1C6 /* ModeViewController.swift in Sources */,
+				BB15D07D1DBB30A40044C1C6 /* LTMorphingLabel+Pixelate.swift in Sources */,
+				BB15D0781DBB30A40044C1C6 /* LTMorphingEffect.swift in Sources */,
+				BB15D07C1DBB30A40044C1C6 /* LTMorphingLabel+Fall.swift in Sources */,
 				BB15CFBE1DBB13E90044C1C6 /* AppDelegate.m in Sources */,
+				BB15D0741DBB30A40044C1C6 /* LTCharacterDiffResult.swift in Sources */,
+				BB15D0791DBB30A40044C1C6 /* LTMorphingLabel+Anvil.swift in Sources */,
+				BB15D0161DBB2FE80044C1C6 /* AnalysisViewController.swift in Sources */,
+				BB15D07E1DBB30A40044C1C6 /* LTMorphingLabel+Sparkle.swift in Sources */,
 				BB15CFBB1DBB13E90044C1C6 /* main.m in Sources */,
+				BB15D0761DBB30A40044C1C6 /* LTEasing.swift in Sources */,
+				BB15D07A1DBB30A40044C1C6 /* LTMorphingLabel+Burn.swift in Sources */,
+				BB15D0801DBB30A40044C1C6 /* LTStringDiffResult.swift in Sources */,
 				BB15CFC71DBB13E90044C1C6 /* PresentorPractice.xcdatamodeld in Sources */,
+				BB15D00F1DBB2A490044C1C6 /* SplashViewController.swift in Sources */,
+				BB15D0751DBB30A40044C1C6 /* LTCharacterLimbo.swift in Sources */,
+				BB15D07B1DBB30A40044C1C6 /* LTMorphingLabel+Evaporate.swift in Sources */,
+				BB15D0771DBB30A40044C1C6 /* LTEmitterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,11 +590,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 9XWYL3K4YT;
 				INFOPLIST_FILE = PresentorPractice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Isometric.PresentorPractice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PresentorPractice/PresentorPractice-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -441,17 +606,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 9XWYL3K4YT;
 				INFOPLIST_FILE = PresentorPractice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Isometric.PresentorPractice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PresentorPractice/PresentorPractice-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		BB15CFEA1DBB13EA0044C1C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 9XWYL3K4YT;
 				INFOPLIST_FILE = PresentorPracticeTests/Info.plist;
@@ -465,6 +634,7 @@
 		BB15CFEB1DBB13EA0044C1C6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 9XWYL3K4YT;
 				INFOPLIST_FILE = PresentorPracticeTests/Info.plist;
@@ -478,6 +648,7 @@
 		BB15CFED1DBB13EA0044C1C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 9XWYL3K4YT;
 				INFOPLIST_FILE = PresentorPracticeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -490,6 +661,7 @@
 		BB15CFEE1DBB13EA0044C1C6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 9XWYL3K4YT;
 				INFOPLIST_FILE = PresentorPracticeUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
