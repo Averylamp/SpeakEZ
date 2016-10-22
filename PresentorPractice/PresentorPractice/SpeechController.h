@@ -24,6 +24,13 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 #import <UIKit/UIKit.h>
 #import <SpeechSDK/SpeechRecognitionService.h>
 
+@protocol speechFeedbackProtocall <NSObject>
+
+-(void) finalRecognitionRecieved: (RecognizedPhrase*) phrase;
+-(void) partialRecognitionRecieved: (NSString*) phrase;
+-(void) errorRecieved: (NSString*) error;
+@end
+
 @interface SpeechController : UIViewController <SpeechRecognitionProtocol>
 {
     NSMutableString* textOnScreen;
@@ -40,6 +47,8 @@ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL
 @property(nonatomic, strong) IBOutlet UIButton* dataLongRadioButton;
 @property(nonatomic, strong) IBOutlet UIButton* dataShortIntentRadioButton;
 @property (nonatomic, strong) IBOutlet UITextView* quoteText;
+@property bool inProgress;
+@property (nonatomic, weak) id <speechFeedbackProtocall> delegate;
 
 -(IBAction)StartButton_Click:(id)sender;
 -(IBAction)RadioButton_Click:(id)sender;

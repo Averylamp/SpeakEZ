@@ -186,7 +186,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="FeB-yG-X1R" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="52U-rz-ULC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="52U-rz-ULC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -247,13 +247,47 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ru4-EC-w8i"/>
+                            <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXg-mA-ioA">
+                                <color key="backgroundColor" red="0.0" green="0.49465673575129532" blue="0.04395298262194907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="c7p-dW-yXn"/>
+                                    <constraint firstAttribute="width" constant="120" id="dkD-eG-8Uv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Panton-Regular" family="Panton" pointSize="17"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startClicked:" destination="N60-7p-cSg" eventType="touchUpInside" id="wWq-xI-6sP"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQa-Vj-IBK" customClass="LTMorphingLabel" customModule="PresentorPractice" customModuleProvider="target">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Gej-I4-B5t"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Panton-Regular" family="Panton" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="morphingEnabled" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="morphingCharacterDelay">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9kU-iD-Sdi" firstAttribute="centerY" secondItem="4Xt-YW-1aV" secondAttribute="centerY" id="8PP-8I-IhG"/>
                             <constraint firstItem="Ru4-EC-w8i" firstAttribute="centerX" secondItem="9kU-iD-Sdi" secondAttribute="centerX" id="8ZT-F3-hwp"/>
+                            <constraint firstItem="ZQa-Vj-IBK" firstAttribute="top" secondItem="Ru4-EC-w8i" secondAttribute="bottom" constant="8" id="A8e-8i-GhH"/>
                             <constraint firstItem="gYd-HD-Pud" firstAttribute="centerX" secondItem="9kU-iD-Sdi" secondAttribute="centerX" id="ADc-iE-3G2"/>
-                            <constraint firstItem="OSu-Ta-D1Q" firstAttribute="top" secondItem="Ru4-EC-w8i" secondAttribute="bottom" constant="40" id="Cqf-aP-4Sj"/>
+                            <constraint firstItem="ZQa-Vj-IBK" firstAttribute="centerX" secondItem="9kU-iD-Sdi" secondAttribute="centerX" id="FmW-RZ-Kh4"/>
                             <constraint firstItem="uHG-Tx-XNh" firstAttribute="leading" secondItem="4Xt-YW-1aV" secondAttribute="leadingMargin" id="G93-XP-A16"/>
                             <constraint firstItem="28r-X4-ZFD" firstAttribute="top" secondItem="Ir3-5T-nVl" secondAttribute="bottom" constant="20" id="Hd3-t5-nBv"/>
                             <constraint firstItem="9kU-iD-Sdi" firstAttribute="centerX" secondItem="4Xt-YW-1aV" secondAttribute="centerX" id="JJ9-IZ-3ge"/>
@@ -261,23 +295,28 @@
                             <constraint firstItem="28r-X4-ZFD" firstAttribute="width" secondItem="9kU-iD-Sdi" secondAttribute="width" multiplier="0.8" id="Tio-T5-kUz"/>
                             <constraint firstItem="uHG-Tx-XNh" firstAttribute="top" secondItem="Ir3-5T-nVl" secondAttribute="bottom" id="Xcq-tx-Gzh"/>
                             <constraint firstItem="9kU-iD-Sdi" firstAttribute="width" secondItem="4Xt-YW-1aV" secondAttribute="width" id="fMh-F1-gJB"/>
+                            <constraint firstItem="aXg-mA-ioA" firstAttribute="top" secondItem="ZQa-Vj-IBK" secondAttribute="bottom" constant="8" id="gJR-dX-p47"/>
                             <constraint firstItem="28r-X4-ZFD" firstAttribute="centerX" secondItem="9kU-iD-Sdi" secondAttribute="centerX" id="mr8-Rk-sad"/>
+                            <constraint firstItem="aXg-mA-ioA" firstAttribute="centerX" secondItem="9kU-iD-Sdi" secondAttribute="centerX" id="naG-OW-8Af"/>
                             <constraint firstItem="9kU-iD-Sdi" firstAttribute="height" secondItem="4Xt-YW-1aV" secondAttribute="height" id="nbc-wW-t1o"/>
                             <constraint firstItem="gYd-HD-Pud" firstAttribute="top" secondItem="28r-X4-ZFD" secondAttribute="bottom" constant="10" id="ppi-NY-BRm"/>
+                            <constraint firstItem="OSu-Ta-D1Q" firstAttribute="top" secondItem="aXg-mA-ioA" secondAttribute="bottom" constant="15" id="qkQ-De-Jhm"/>
                             <constraint firstItem="Ru4-EC-w8i" firstAttribute="width" secondItem="9kU-iD-Sdi" secondAttribute="width" id="rjN-Um-pu3"/>
                             <constraint firstItem="gYd-HD-Pud" firstAttribute="width" secondItem="9kU-iD-Sdi" secondAttribute="width" multiplier="0.8" id="uFt-gF-vjr"/>
+                            <constraint firstItem="ZQa-Vj-IBK" firstAttribute="width" secondItem="9kU-iD-Sdi" secondAttribute="width" id="vA5-yp-VNR"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="interviewQuestionLabel" destination="gYd-HD-Pud" id="HeZ-yj-hAE"/>
                         <outlet property="interviewQuestionLabelHeightConstraint" destination="oi6-GM-ED5" id="0Nh-1c-BGb"/>
+                        <outlet property="partialTextLabel" destination="ZQa-Vj-IBK" id="w0o-qJ-cN5"/>
                         <outlet property="scrollView" destination="Ru4-EC-w8i" id="GTj-vG-jOD"/>
                         <outlet property="titleLabel" destination="28r-X4-ZFD" id="F9F-tW-AMY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ySk-Y6-ibs" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2425" y="38"/>
+            <point key="canvasLocation" x="2424.8000000000002" y="37.331334332833585"/>
         </scene>
     </scenes>
     <resources>

@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class AnalysisViewController: UIViewController {
+class AnalysisViewController: UIViewController, speechFeedbackProtocall {
     @IBOutlet weak var titleLabel: LTMorphingLabel!
     enum State{
         case Presentation, Interview, Freestyle
@@ -24,9 +24,11 @@ class AnalysisViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     var fullText: String = ""
+    var speechAnalyzer = SpeechController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        speechAnalyzer.delegate = self
         
         self.delay(0.5) {
             switch self.state{
@@ -80,11 +82,6 @@ class AnalysisViewController: UIViewController {
                     self.synth.speak(readyToStart)
                 })
             }
-        }
-        delay(10.0) { 
-            print("Starting Mic")
-            let vc = SpeechController()
-            vc.startButton_Click(nil)
         }
         // Do any additional setup after loading the view.
     }
@@ -160,6 +157,58 @@ class AnalysisViewController: UIViewController {
         
     }
     
+    
+    var shouldEnd = false
+    @IBAction func startClicked(_ sender: AnyObject) {
+        if let button = sender as? UIButton, sender.tag == 11{
+            speechAnalyzer.startButton_Click(nil)
+        
+            if button.titleLabel?.text == "Start"{
+                shouldEnd = false
+                button.backgroundColor = UIColor(red: 204.0 / 254.0, green: 44.0 / 255.0, blue: 22.0/255.0, alpha: 1.0)
+                button.setTitle("End", for: .normal)
+            }else{
+                shouldEnd = true
+                button.backgroundColor = UIColor(red: 0.0 / 254.0, green: 126.0 / 255.0, blue: 11.0/255.0, alpha: 1.0)
+                button.setTitle("Start", for: .normal)
+            }
+            
+        }
+        
+    }
+    
+    
+    // MARK: - Speech Delegates
+    
+    func finalRecognitionRecieved(_ phrase: RecognizedPhrase!) {
+//        print("Final Recognition \(phrase.displayText)")
+        self.addStringToTotalText(string: phrase.displayText)
+        if !shouldEnd{
+            speechAnalyzer.startButton_Click(nil)
+        }else{
+            startTextAnalysis()
+        }
+    }
+    
+    
+    @IBOutlet weak var partialTextLabel: LTMorphingLabel!
+    
+    func partialRecognitionRecieved(_ phrase: String!) {
+        partialTextLabel.text = phrase
+    }
+    
+    func errorRecieved(_ error: String!) {
+        partialTextLabel.text = error
+        if !shouldEnd{
+            speechAnalyzer.startButton_Click(nil)
+        }else{
+            startTextAnalysis()
+        }
+    }
+    
+    func startTextAnalysis(){
+        
+    }
     /*
     // MARK: - Navigation
 

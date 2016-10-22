@@ -33,6 +33,7 @@
 
 #include "SpeechController.h"
 
+
 @interface SpeechController (/*private*/)
 
 @property (nonatomic, readonly)  NSString*               subscriptionKey;
@@ -46,7 +47,10 @@
 @property (nonatomic, readonly)  NSString*               longWaveFile;
 @property (nonatomic, readonly)  NSDictionary*           settings;
 @property (nonatomic, readwrite) NSArray*                buttonGroup;
-@property (nonatomic, readwrite)  NSUInteger              modeIndex;
+@property (nonatomic)  NSUInteger              modeIndex;
+
+
+
 
 @end
 
@@ -56,6 +60,8 @@ NSString* ConvertSpeechErrorToString(int errorCode);
 /**
  * The Main App ViewController
  */
+
+
 @implementation SpeechController
 
 @synthesize buttonGroup;
@@ -197,11 +203,17 @@ NSString* ConvertSpeechErrorToString(int errorCode);
     [self.quoteText setHidden:show];
 }
 
+
+
 /**
  * Handles the Click event of the startButton control.
  * @param sender The event sender
  */
 -(IBAction)StartButton_Click:(id)sender {
+    if (self.inProgress == YES) {
+        return ;
+    }
+    self.inProgress = YES;
     [textOnScreen setString:(@"")];
     [self setText: textOnScreen];
     [[self startButton] setEnabled:NO];
@@ -209,7 +221,6 @@ NSString* ConvertSpeechErrorToString(int errorCode);
     [self showMenu:FALSE];
     
     [self logRecognitionStart];
-    
     if (self.useMicrophone) {
         if (micClient == nil) {
             if (!self.wantIntent) {
@@ -338,12 +349,11 @@ NSString* ConvertSpeechErrorToString(int errorCode);
             [[self startButton] setEnabled:YES];
         });
     }
-    NSLog(@"Final response recieved");
     //    NSLog(@"%@", isFinalDicationMessage);
     
-    if (YES) {
+    if (!isFinalDicationMessage) {
+        NSLog(@"Final response recieved");
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"Here");
             [self WriteLine:(@"********* Final n-BEST Results *********")];
             for (int i = 0; i < [response.RecognizedPhrase count]; i++) {
                 RecognizedPhrase* phrase = response.RecognizedPhrase[i];
@@ -355,10 +365,19 @@ NSString* ConvertSpeechErrorToString(int errorCode);
                                         i,
                                         ConvertSpeechRecoConfidenceEnumToString(phrase.Confidence),
                                         phrase.DisplayText]);
+                if (self.delegate != nil) {
+                    self.inProgress = NO;
+                    [self.delegate finalRecognitionRecieved:phrase];
+                }
+            }
+            if ([response.RecognizedPhrase count] == 0){
+                [self.delegate errorRecieved: @"Unable to Recognize"];
             }
             
             [self WriteLine:(@"")];
         });
+    }else{
+        NSLog(@"Non-Final response recieved");
     }
 }
 
@@ -380,6 +399,10 @@ NSString* ConvertSpeechErrorToString(int errorCode);
  */
 -(void)onPartialResponseReceived:(NSString*) response {
     dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"Partial response - %@", response);
+        if (self.delegate != nil) {
+            [self.delegate partialRecognitionRecieved:response];
+        }
         [self WriteLine:(@"--- Partial result received by onPartialResponseReceived ---")];
         [self WriteLine:response];
     });
@@ -391,7 +414,12 @@ NSString* ConvertSpeechErrorToString(int errorCode);
  * @param errorCode The error code.  Refer to SpeechClientStatus for details.
  */
 -(void)onError:(NSString*)errorMessage withErrorCode:(int)errorCode {
+    NSLog(@"ON ERROR TRIGGERED");
     dispatch_async(dispatch_get_main_queue(), ^{
+        self.inProgress = NO;
+        if (self.delegate != nil) {
+            [self.delegate errorRecieved:ConvertSpeechErrorToString(errorCode)];
+        }
         [[self startButton] setEnabled:YES];
         [self WriteLine:(@"--- Error received by onError ---")];
         [self WriteLine:[[NSString alloc] initWithFormat:(@"%@ %@"), errorMessage, ConvertSpeechErrorToString(errorCode)]];
