@@ -228,6 +228,42 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall {
         
         print("Full text - \(fullText)")
         
+        var fullTextArr = fullText.characters.split{$0 == " "}.map(String.init)
+        var analysisText = "Great Speech\n"
+        let speechWordCount = "\nYour Speech was a total of:\n  \(fullTextArr.count) Words\n"
+        let speechTime = "\nYour total speech time was:\n  2 minutes and 5 seconds\n"
+        
+        
+        analysisText = analysisText + speechWordCount + speechTime
+        
+        let speechResultsVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SpeechResultsVC") as! SpeechResultsViewController
+        
+        speechResultsVC.view.frame =   CGRect(x: 40, y: 80, width: self.view.frame.width - 80, height: self.view.frame.height - 160)
+        let speechResultsView = speechResultsVC.view!
+        speechResultsView.alpha = 0.0
+        
+        
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: speechResultsView.frame.width, height: 50))
+        titleLabel.font = UIFont(name: "Panton-SemiBold", size: 26)
+        titleLabel.text = "Nice Work!"
+        titleLabel.textAlignment = .center
+        speechResultsView.addSubview(titleLabel)
+        
+        let textView = UITextView(frame: CGRect(x: 0, y: 70, width: speechResultsView.frame.width, height: speechResultsView.frame.height - 90))
+        textView.allowsEditingTextAttributes = false
+        textView.isSelectable = true
+        
+        
+        
+        
+        self.view.addSubview(speechResultsView)
+        UIView.animate(withDuration: 1.0) {
+            speechResultsView.alpha = 1.0
+//            speechResultsView.center = CGPoint(x: speechResultsView.center.x, y: speechResultsView.center.y + 50)
+            
+        }
+        
+        
     }
     /*
     // MARK: - Navigation

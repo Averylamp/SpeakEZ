@@ -1,9 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Panton-SemiBold.otf">
+            <string>Panton-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -16,7 +24,35 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="PSK-re-cAl"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="micIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Oc7-kl-rOz">
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Oc7-kl-rOz" secondAttribute="height" multiplier="1:1" id="RpX-LR-5z0"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Presentor Practice" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wf-wP-UKn">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8oe-z7-aOF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Panton-SemiBold" family="Panton" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="PSK-re-cAl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="3EG-GI-KL3"/>
+                            <constraint firstItem="9wf-wP-UKn" firstAttribute="centerX" secondItem="PSK-re-cAl" secondAttribute="centerX" id="4Mi-Y6-eCm"/>
+                            <constraint firstItem="PSK-re-cAl" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="5KZ-G5-yhf"/>
+                            <constraint firstItem="9wf-wP-UKn" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="75" id="77m-Kg-EPF"/>
+                            <constraint firstItem="9wf-wP-UKn" firstAttribute="width" secondItem="PSK-re-cAl" secondAttribute="width" id="7EX-hr-chu"/>
+                            <constraint firstItem="Oc7-kl-rOz" firstAttribute="centerY" secondItem="PSK-re-cAl" secondAttribute="centerY" id="BXc-gX-fiV"/>
+                            <constraint firstItem="Oc7-kl-rOz" firstAttribute="width" secondItem="PSK-re-cAl" secondAttribute="width" multiplier="0.5" id="GSm-Ru-847"/>
+                            <constraint firstItem="Oc7-kl-rOz" firstAttribute="centerX" secondItem="PSK-re-cAl" secondAttribute="centerX" id="Qtg-ON-YFt"/>
+                            <constraint firstItem="PSK-re-cAl" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="QuB-Cq-Fo0"/>
+                            <constraint firstItem="PSK-re-cAl" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="uz5-Gi-vv0"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +60,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bg" width="750" height="1334"/>
+        <image name="micIcon" width="999" height="1665"/>
+    </resources>
 </document>

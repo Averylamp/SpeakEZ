@@ -480,19 +480,17 @@ NSString* ConvertSpeechErrorToString(int errorCode);
  * @param sender The sending caller.
  */
 -(IBAction)RadioButton_Click:(id)sender {
-    NSUInteger index = [self.buttonGroup indexOfObject:sender];
-    for(NSUInteger i = 0; i < self.buttonGroup.count; ++i) {
-        UIButton* buttonSel = (UIButton*)self.buttonGroup[i];
+//    NSUInteger index = [self.buttonGroup indexOfObject:sender];
+//    for(NSUInteger i = 0; i < self.buttonGroup.count; ++i) {
+//        UIButton* buttonSel = (UIButton*)self.buttonGroup[i];
 //        UIButton_SETCHECKED(buttonSel, (index == i) ? TRUE : FALSE);
-    }
+//    }
     
     if (micClient != nil) {
-        [micClient finalize];
         micClient = nil;
     }
     
     if (dataClient != nil) {
-        [dataClient finalize];
         dataClient = nil;
     }
     

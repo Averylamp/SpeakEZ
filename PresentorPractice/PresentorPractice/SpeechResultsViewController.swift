@@ -9,10 +9,10 @@
 import UIKit
 
 class SpeechResultsViewController: UIViewController {
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
