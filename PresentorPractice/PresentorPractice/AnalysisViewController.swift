@@ -9,12 +9,17 @@
 import UIKit
 import AVFoundation
 
-class AnalysisViewController: UIViewController, speechFeedbackProtocall {
+class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleSpeechFeedbackProtocall {
     @IBOutlet weak var titleLabel: LTMorphingLabel!
     enum State{
         case Presentation, Interview, Freestyle
     }
+    enum SpeechSystem{
+        case Google, Microsoft, Apple
+    }
     var state: State = State.Freestyle
+    var speechSystem : SpeechSystem = .Google
+    
     let synth = AVSpeechSynthesizer()
     
     @IBOutlet weak var interviewQuestionLabelHeightConstraint: NSLayoutConstraint!
@@ -25,10 +30,14 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall {
     
     var fullText: String = ""
     var speechAnalyzer = SpeechController()
+    var googleSpeechAnalyzer = GoogleSpeechController()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         speechAnalyzer.delegate = self
+        googleSpeechAnalyzer.delegate = self
         
         self.delay(0.5) {
             switch self.state{
@@ -161,8 +170,11 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall {
     var shouldEnd = false
     @IBAction func startClicked(_ sender: AnyObject) {
         if let button = sender as? UIButton, sender.tag == 11{
-            speechAnalyzer.startButton_Click(nil)
-        
+            if speechSystem == .Microsoft{
+                speechAnalyzer.startButton_Click(nil)
+            }else if speechSystem == .Google{
+                googleSpeechAnalyzer.recordAudio(nil)
+            }
             if button.titleLabel?.text == "Start"{
                 shouldEnd = false
                 button.backgroundColor = UIColor(red: 204.0 / 254.0, green: 44.0 / 255.0, blue: 22.0/255.0, alpha: 1.0)
@@ -181,7 +193,7 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall {
     }
     
     
-    // MARK: - Speech Delegates
+    // MARK: - Speech Delegates MICROSOFT
     
     func finalRecognitionRecieved(_ phrase: RecognizedPhrase!) {
 //        print("Final Recognition \(phrase.displayText)")
@@ -210,6 +222,36 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall {
             
             startTextAnalysis()
         }
+    }
+    
+    // MARK: - Speech Delegates GOOGLE
+    
+    func finalGoogleRecognitionRecieved(_ phrase: String!) {
+        self.addStringToTotalText(string: phrase + ".")
+        if !shouldEnd{
+            googleSpeechAnalyzer.recordAudio(nil)
+        }else{
+            startTextAnalysis()
+        }
+        print("Final Google String recieved - \(phrase)")
+    }
+    
+    func partialGoogleRecognitionRecieved(_ phrase: String!) {
+        partialTextLabel.text = phrase
+        print("Partial Google String recieved - \(phrase)")
+    }
+    
+    func errorGoogleRecieved(_ error: String!) {
+        partialTextLabel.text = error
+        if !shouldEnd{
+            self.delay(0.2, closure: {
+                self.speechAnalyzer.startButton_Click(nil)
+            })
+        }else{
+            
+            startTextAnalysis()
+        }
+        print("Error Google Recieved - \(error)")
     }
     
     var progressHUD = MBProgressHUD()

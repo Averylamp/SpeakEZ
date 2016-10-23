@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25F918EE5AAD78AF37FDC89D /* libPods-PresentorPractice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA449DE9C6C2C9B77463764A /* libPods-PresentorPractice.a */; };
 		BB15CFBB1DBB13E90044C1C6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB15CFBA1DBB13E90044C1C6 /* main.m */; };
 		BB15CFBE1DBB13E90044C1C6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB15CFBD1DBB13E90044C1C6 /* AppDelegate.m */; };
 		BB15CFC41DBB13E90044C1C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB15CFC21DBB13E90044C1C6 /* Main.storyboard */; };
@@ -52,6 +53,9 @@
 		BB15D0941DBB5A560044C1C6 /* SpeechController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0931DBB5A560044C1C6 /* SpeechController.mm */; };
 		BB15D0951DBB5D9C0044C1C6 /* SpeechSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB15D08D1DBB594B0044C1C6 /* SpeechSDK.framework */; };
 		BB15D0961DBB5D9C0044C1C6 /* SpeechSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB15D08D1DBB594B0044C1C6 /* SpeechSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BB4601841DBC7064003F1828 /* AudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46017E1DBC7064003F1828 /* AudioController.m */; };
+		BB4601851DBC7064003F1828 /* SpeechRecognitionService.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4601801DBC7064003F1828 /* SpeechRecognitionService.m */; };
+		BB4601861DBC7064003F1828 /* GoogleSpeechController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4601821DBC7064003F1828 /* GoogleSpeechController.m */; };
 		BB8642DF1DBBEA8F00B00D11 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8642DE1DBBEA8F00B00D11 /* MBProgressHUD.m */; };
 		BB8642E11DBBFBFB00B00D11 /* SpeechResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8642E01DBBFBFB00B00D11 /* SpeechResultsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -88,6 +92,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		914710EAD730AA684C4FB92C /* Pods-PresentorPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresentorPractice.release.xcconfig"; path = "Pods/Target Support Files/Pods-PresentorPractice/Pods-PresentorPractice.release.xcconfig"; sourceTree = "<group>"; };
 		BB15CFB61DBB13E90044C1C6 /* PresentorPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PresentorPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB15CFBA1DBB13E90044C1C6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BB15CFBC1DBB13E90044C1C6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -142,9 +147,17 @@
 		BB15D08D1DBB594B0044C1C6 /* SpeechSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpeechSDK.framework; path = PresentorPractice/SpeechSDK.framework; sourceTree = "<group>"; };
 		BB15D0921DBB5A560044C1C6 /* SpeechController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechController.h; sourceTree = "<group>"; };
 		BB15D0931DBB5A560044C1C6 /* SpeechController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SpeechController.mm; sourceTree = "<group>"; };
+		BB46017D1DBC7064003F1828 /* AudioController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioController.h; sourceTree = "<group>"; };
+		BB46017E1DBC7064003F1828 /* AudioController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioController.m; sourceTree = "<group>"; };
+		BB46017F1DBC7064003F1828 /* SpeechRecognitionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechRecognitionService.h; sourceTree = "<group>"; };
+		BB4601801DBC7064003F1828 /* SpeechRecognitionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechRecognitionService.m; sourceTree = "<group>"; };
+		BB4601811DBC7064003F1828 /* GoogleSpeechController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleSpeechController.h; sourceTree = "<group>"; };
+		BB4601821DBC7064003F1828 /* GoogleSpeechController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleSpeechController.m; sourceTree = "<group>"; };
 		BB8642DD1DBBEA8F00B00D11 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		BB8642DE1DBBEA8F00B00D11 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		BB8642E01DBBFBFB00B00D11 /* SpeechResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechResultsViewController.swift; sourceTree = "<group>"; };
+		EA449DE9C6C2C9B77463764A /* libPods-PresentorPractice.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PresentorPractice.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F474A1894E2CD3C1F4189D12 /* Pods-PresentorPractice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresentorPractice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PresentorPractice/Pods-PresentorPractice.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +169,7 @@
 				BB15D0951DBB5D9C0044C1C6 /* SpeechSDK.framework in Frameworks */,
 				BB15D0861DBB588B0044C1C6 /* CoreAudio.framework in Frameworks */,
 				BB15D0121DBB2AB00044C1C6 /* AVFoundation.framework in Frameworks */,
+				25F918EE5AAD78AF37FDC89D /* libPods-PresentorPractice.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +190,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		433F7D21102A425BB8ABED4E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F474A1894E2CD3C1F4189D12 /* Pods-PresentorPractice.debug.xcconfig */,
+				914710EAD730AA684C4FB92C /* Pods-PresentorPractice.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BB15CFAD1DBB13E90044C1C6 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +207,7 @@
 				BB15CFE01DBB13EA0044C1C6 /* PresentorPracticeUITests */,
 				BB15CFB71DBB13E90044C1C6 /* Products */,
 				BB15D0101DBB2AB00044C1C6 /* Frameworks */,
+				433F7D21102A425BB8ABED4E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -216,6 +240,13 @@
 				BB8642DE1DBBEA8F00B00D11 /* MBProgressHUD.m */,
 				BB15CFCD1DBB13E90044C1C6 /* Info.plist */,
 				BB15D08B1DBB59020044C1C6 /* settings.plist */,
+				BB46017A1DBC7064003F1828 /* Audio */,
+				BB46017D1DBC7064003F1828 /* AudioController.h */,
+				BB46017E1DBC7064003F1828 /* AudioController.m */,
+				BB46017F1DBC7064003F1828 /* SpeechRecognitionService.h */,
+				BB4601801DBC7064003F1828 /* SpeechRecognitionService.m */,
+				BB4601811DBC7064003F1828 /* GoogleSpeechController.h */,
+				BB4601821DBC7064003F1828 /* GoogleSpeechController.m */,
 				BB15CFFA1DBB22180044C1C6 /* Panton Font */,
 				BB15CFC51DBB13E90044C1C6 /* PresentorPractice.xcdatamodeld */,
 				BB15CFB91DBB13E90044C1C6 /* Supporting Files */,
@@ -273,6 +304,7 @@
 				BB15D0871DBB58920044C1C6 /* AudioToolbox.framework */,
 				BB15D0851DBB588B0044C1C6 /* CoreAudio.framework */,
 				BB15D0111DBB2AB00044C1C6 /* AVFoundation.framework */,
+				EA449DE9C6C2C9B77463764A /* libPods-PresentorPractice.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -311,6 +343,13 @@
 			path = Particles;
 			sourceTree = "<group>";
 		};
+		BB46017A1DBC7064003F1828 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -318,10 +357,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BB15CFE61DBB13EA0044C1C6 /* Build configuration list for PBXNativeTarget "PresentorPractice" */;
 			buildPhases = (
+				48569492CCF27A080C425670 /* [CP] Check Pods Manifest.lock */,
 				BB15CFB21DBB13E90044C1C6 /* Sources */,
 				BB15CFB31DBB13E90044C1C6 /* Frameworks */,
 				BB15CFB41DBB13E90044C1C6 /* Resources */,
 				BB15D0971DBB5D9C0044C1C6 /* Embed Frameworks */,
+				DE0171FEABB81AD75BBEE633 /* [CP] Embed Pods Frameworks */,
+				A421AF9578470DDF6BD9EA33 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -459,6 +501,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		48569492CCF27A080C425670 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A421AF9578470DDF6BD9EA33 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PresentorPractice/Pods-PresentorPractice-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE0171FEABB81AD75BBEE633 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PresentorPractice/Pods-PresentorPractice-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BB15CFB21DBB13E90044C1C6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -470,8 +560,10 @@
 				BB15D0781DBB30A40044C1C6 /* LTMorphingEffect.swift in Sources */,
 				BB15D07C1DBB30A40044C1C6 /* LTMorphingLabel+Fall.swift in Sources */,
 				BB15CFBE1DBB13E90044C1C6 /* AppDelegate.m in Sources */,
+				BB4601861DBC7064003F1828 /* GoogleSpeechController.m in Sources */,
 				BB15D0741DBB30A40044C1C6 /* LTCharacterDiffResult.swift in Sources */,
 				BB15D0791DBB30A40044C1C6 /* LTMorphingLabel+Anvil.swift in Sources */,
+				BB4601851DBC7064003F1828 /* SpeechRecognitionService.m in Sources */,
 				BB15D0161DBB2FE80044C1C6 /* AnalysisViewController.swift in Sources */,
 				BB15D07E1DBB30A40044C1C6 /* LTMorphingLabel+Sparkle.swift in Sources */,
 				BB15CFBB1DBB13E90044C1C6 /* main.m in Sources */,
@@ -481,6 +573,7 @@
 				BB15D07A1DBB30A40044C1C6 /* LTMorphingLabel+Burn.swift in Sources */,
 				BB15D0801DBB30A40044C1C6 /* LTStringDiffResult.swift in Sources */,
 				BB15CFC71DBB13E90044C1C6 /* PresentorPractice.xcdatamodeld in Sources */,
+				BB4601841DBC7064003F1828 /* AudioController.m in Sources */,
 				BB15D00F1DBB2A490044C1C6 /* SplashViewController.swift in Sources */,
 				BB15D0751DBB30A40044C1C6 /* LTCharacterLimbo.swift in Sources */,
 				BB15D07B1DBB30A40044C1C6 /* LTMorphingLabel+Evaporate.swift in Sources */,
@@ -630,6 +723,7 @@
 		};
 		BB15CFE71DBB13EA0044C1C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F474A1894E2CD3C1F4189D12 /* Pods-PresentorPractice.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -651,6 +745,7 @@
 		};
 		BB15CFE81DBB13EA0044C1C6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 914710EAD730AA684C4FB92C /* Pods-PresentorPractice.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

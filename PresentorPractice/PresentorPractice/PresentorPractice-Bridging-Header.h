@@ -3,4 +3,5 @@
 //
 
 #import "SpeechController.h"
+#import "GoogleSpeechController.h"
 #import "MBProgressHUD.h"
