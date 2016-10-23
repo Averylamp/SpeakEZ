@@ -58,6 +58,7 @@
 		BB4601861DBC7064003F1828 /* GoogleSpeechController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4601821DBC7064003F1828 /* GoogleSpeechController.m */; };
 		BB8642DF1DBBEA8F00B00D11 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8642DE1DBBEA8F00B00D11 /* MBProgressHUD.m */; };
 		BB8642E11DBBFBFB00B00D11 /* SpeechResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8642E01DBBFBFB00B00D11 /* SpeechResultsViewController.swift */; };
+		BBE9A9131DBC84EF00AE933F /* AppleSpeechController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE9A9121DBC84EF00AE933F /* AppleSpeechController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +157,7 @@
 		BB8642DD1DBBEA8F00B00D11 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		BB8642DE1DBBEA8F00B00D11 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		BB8642E01DBBFBFB00B00D11 /* SpeechResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechResultsViewController.swift; sourceTree = "<group>"; };
+		BBE9A9121DBC84EF00AE933F /* AppleSpeechController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSpeechController.swift; sourceTree = "<group>"; };
 		EA449DE9C6C2C9B77463764A /* libPods-PresentorPractice.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PresentorPractice.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F474A1894E2CD3C1F4189D12 /* Pods-PresentorPractice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PresentorPractice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PresentorPractice/Pods-PresentorPractice.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -234,19 +236,13 @@
 				BB8642E01DBBFBFB00B00D11 /* SpeechResultsViewController.swift */,
 				BB15CFC81DBB13E90044C1C6 /* Assets.xcassets */,
 				BB15CFCA1DBB13E90044C1C6 /* LaunchScreen.storyboard */,
-				BB15D0921DBB5A560044C1C6 /* SpeechController.h */,
-				BB15D0931DBB5A560044C1C6 /* SpeechController.mm */,
 				BB8642DD1DBBEA8F00B00D11 /* MBProgressHUD.h */,
 				BB8642DE1DBBEA8F00B00D11 /* MBProgressHUD.m */,
 				BB15CFCD1DBB13E90044C1C6 /* Info.plist */,
 				BB15D08B1DBB59020044C1C6 /* settings.plist */,
-				BB46017A1DBC7064003F1828 /* Audio */,
-				BB46017D1DBC7064003F1828 /* AudioController.h */,
-				BB46017E1DBC7064003F1828 /* AudioController.m */,
-				BB46017F1DBC7064003F1828 /* SpeechRecognitionService.h */,
-				BB4601801DBC7064003F1828 /* SpeechRecognitionService.m */,
-				BB4601811DBC7064003F1828 /* GoogleSpeechController.h */,
-				BB4601821DBC7064003F1828 /* GoogleSpeechController.m */,
+				BBE9A9121DBC84EF00AE933F /* AppleSpeechController.swift */,
+				BBE9A9111DBC84A800AE933F /* Microsoft Speech */,
+				BBE9A9101DBC849B00AE933F /* Google Speech Recognizer */,
 				BB15CFFA1DBB22180044C1C6 /* Panton Font */,
 				BB15CFC51DBB13E90044C1C6 /* PresentorPractice.xcdatamodeld */,
 				BB15CFB91DBB13E90044C1C6 /* Supporting Files */,
@@ -343,11 +339,26 @@
 			path = Particles;
 			sourceTree = "<group>";
 		};
-		BB46017A1DBC7064003F1828 /* Audio */ = {
+		BBE9A9101DBC849B00AE933F /* Google Speech Recognizer */ = {
 			isa = PBXGroup;
 			children = (
+				BB46017D1DBC7064003F1828 /* AudioController.h */,
+				BB46017E1DBC7064003F1828 /* AudioController.m */,
+				BB46017F1DBC7064003F1828 /* SpeechRecognitionService.h */,
+				BB4601801DBC7064003F1828 /* SpeechRecognitionService.m */,
+				BB4601811DBC7064003F1828 /* GoogleSpeechController.h */,
+				BB4601821DBC7064003F1828 /* GoogleSpeechController.m */,
 			);
-			path = Audio;
+			name = "Google Speech Recognizer";
+			sourceTree = "<group>";
+		};
+		BBE9A9111DBC84A800AE933F /* Microsoft Speech */ = {
+			isa = PBXGroup;
+			children = (
+				BB15D0921DBB5A560044C1C6 /* SpeechController.h */,
+				BB15D0931DBB5A560044C1C6 /* SpeechController.mm */,
+			);
+			name = "Microsoft Speech";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -572,6 +583,7 @@
 				BB8642DF1DBBEA8F00B00D11 /* MBProgressHUD.m in Sources */,
 				BB15D07A1DBB30A40044C1C6 /* LTMorphingLabel+Burn.swift in Sources */,
 				BB15D0801DBB30A40044C1C6 /* LTStringDiffResult.swift in Sources */,
+				BBE9A9131DBC84EF00AE933F /* AppleSpeechController.swift in Sources */,
 				BB15CFC71DBB13E90044C1C6 /* PresentorPractice.xcdatamodeld in Sources */,
 				BB4601841DBC7064003F1828 /* AudioController.m in Sources */,
 				BB15D00F1DBB2A490044C1C6 /* SplashViewController.swift in Sources */,

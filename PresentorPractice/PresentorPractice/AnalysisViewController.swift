@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleSpeechFeedbackProtocall {
+class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleSpeechFeedbackProtocall, appleSpeechFeedbackProtocall {
     @IBOutlet weak var titleLabel: LTMorphingLabel!
     enum State{
         case Presentation, Interview, Freestyle
@@ -31,13 +31,15 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
     var fullText: String = ""
     var speechAnalyzer = SpeechController()
     var googleSpeechAnalyzer = GoogleSpeechController()
-    
+    var appleSpeechAnalyzer = AppleSpeechController()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         speechAnalyzer.delegate = self
         googleSpeechAnalyzer.delegate = self
+        appleSpeechAnalyzer.delegate = self
+        appleSpeechAnalyzer.setupRecognizer()
         
         self.delay(0.5) {
             switch self.state{
@@ -52,7 +54,7 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
                 self.interviewQuestionLabel.text = "If you opened your own business, what type of company would it be and why?"
                 
                 self.delay(4.0, closure: {
-                    UIView.animate(withDuration: 1.0, animations: { 
+                    UIView.animate(withDuration: 1.0, animations: {
                         self.interviewQuestionLabel.alpha = 1.0
                     })
                 })
@@ -95,7 +97,7 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
         // Do any additional setup after loading the view.
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -104,7 +106,7 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
     @IBAction func backButtonClicked(_ sender: AnyObject) {
         self.navigationController?.popViewController(animated: true)
     }
-
+    
     var lastLabel: LTMorphingLabel? = nil
     
     func addStringToTotalText(string: String){
@@ -135,9 +137,9 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
             }
             let width = testLabel.intrinsicContentSize.width
             if width > maxWidth || i == fullAdditionArr.count  {
-//                for j in 0..<i {
-//                    self.lastLabel?.text =  lastLabel!.text + " " + fullAdditionArr[j]
-//                }
+                //                for j in 0..<i {
+                //                    self.lastLabel?.text =  lastLabel!.text + " " + fullAdditionArr[j]
+                //                }
                 var textToAdd = ""
                 for _ in 0..<i {
                     textToAdd += " " + fullAdditionArr.remove(at: 0)
@@ -168,24 +170,51 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
     
     
     var shouldEnd = false
+    var timeElapsed = 0.0
+    var startTime:CFAbsoluteTime?
+    
+    
     @IBAction func startClicked(_ sender: AnyObject) {
+        
         if let button = sender as? UIButton, sender.tag == 11{
-            if speechSystem == .Microsoft{
-                speechAnalyzer.startButton_Click(nil)
-            }else if speechSystem == .Google{
-                googleSpeechAnalyzer.recordAudio(nil)
-            }
             if button.titleLabel?.text == "Start"{
+                startTime = CFAbsoluteTimeGetCurrent()
+                if speechSystem == .Microsoft{
+                    speechAnalyzer.startButton_Click(nil)
+                }else if speechSystem == .Google{
+                    googleSpeechAnalyzer.recordAudio(nil)
+                }else if speechSystem == .Apple{
+                    appleSpeechAnalyzer.startSpeech()
+                }
                 shouldEnd = false
                 button.backgroundColor = UIColor(red: 204.0 / 254.0, green: 44.0 / 255.0, blue: 22.0/255.0, alpha: 1.0)
                 button.setTitle("End", for: .normal)
             }else{
+                let endTime = CFAbsoluteTimeGetCurrent()
+                let secondDiff = endTime - startTime!
+                timeElapsed += secondDiff
                 shouldEnd = true
                 button.backgroundColor = UIColor(red: 0.0 / 254.0, green: 126.0 / 255.0, blue: 11.0/255.0, alpha: 1.0)
                 button.setTitle("Start", for: .normal)
-                if speechAnalyzer.inProgress == false{
-                    startTextAnalysis()
+                if speechSystem == .Microsoft{
+                    if speechAnalyzer.inProgress == false{
+                        startTextAnalysis()
+                    }
+                }else if speechSystem == .Google{
+                    if !SpeechRecognitionService.sharedInstance().isStreaming(){
+                        startTextAnalysis()
+                    }else{
+                        googleSpeechAnalyzer.stopAudio(nil)
+                        delay(1.0, closure: { 
+                            self.startTextAnalysis()
+                        })
+                    }
+                }else if speechSystem == .Apple{
+                    if !appleSpeechAnalyzer.audioEngine.isRunning{
+                        startTextAnalysis()
+                    }
                 }
+                
             }
             
         }
@@ -196,7 +225,7 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
     // MARK: - Speech Delegates MICROSOFT
     
     func finalRecognitionRecieved(_ phrase: RecognizedPhrase!) {
-//        print("Final Recognition \(phrase.displayText)")
+        //        print("Final Recognition \(phrase.displayText)")
         self.addStringToTotalText(string: phrase.displayText)
         if !shouldEnd{
             speechAnalyzer.startButton_Click(nil)
@@ -245,15 +274,50 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
         partialTextLabel.text = error
         if !shouldEnd{
             self.delay(0.2, closure: {
-                self.speechAnalyzer.startButton_Click(nil)
+                self.googleSpeechAnalyzer.recordAudio(nil)
             })
         }else{
-            
             startTextAnalysis()
         }
         print("Error Google Recieved - \(error)")
     }
     
+    // MARK: - Speech Delegates APPLE
+    func finalAppleRecognitionRecieved(phrase: String) {
+        self.addStringToTotalText(string: phrase)
+        if !shouldEnd{
+            delay(0.2, closure: {
+                self.appleSpeechAnalyzer.startSpeech()
+            })
+        }else{
+            startTextAnalysis()
+        }
+        print("Final Apple String recieved - \(phrase)")
+    }
+    
+    func partialAppleRecognitionRecieved(phrase: String) {
+        partialTextLabel.text = phrase
+        if phrase.characters.last == "."{
+            print("Sentence Ended")
+            appleSpeechAnalyzer.endSpeech()
+        }
+        print("Partial Apple String recieved - \(phrase)")
+    }
+    
+    func errorAppleRecieved(error: String) {
+        partialTextLabel.text = error
+        if !shouldEnd{
+            self.delay(0.2, closure: {
+                self.appleSpeechAnalyzer.recordButtonTapped()
+            })
+        }else{
+            
+            startTextAnalysis()
+        }
+        print("Error Apple Recieved - \(error)")
+    }
+    
+    // MARK : - Text Analysis
     var progressHUD = MBProgressHUD()
     
     func startTextAnalysis(){
@@ -269,14 +333,41 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
         progressHUD.dimBackground = true
         
         print("Full text - \(fullText)")
+        var tempFullText = fullText.replacingOccurrences(of: ".", with: " ")
+        tempFullText = tempFullText.replacingOccurrences(of: ",", with: "")
+        let fullTextArr = tempFullText.characters.split{$0 == " "}.map(String.init)
+        var freqDictionary = [String: Int]()
+        for word in fullTextArr{
+            if freqDictionary[word.lowercased()] != nil{
+                freqDictionary[word.lowercased()]! += 1
+            }else{
+                freqDictionary[word.lowercased()] = 1
+            }
+        }
+        print(freqDictionary)
+        var analysisText = "Great Speech!"
+        let speechWordCount = "\n\nYour Speech was a total of:\n  \(fullTextArr.count) Words"
+        let speechTime = "\n\nYour total speech time was:\n  \(Int(timeElapsed) /  60) minutes and \(Int(timeElapsed) % 60) seconds"
+        print("TIME ELAPSED \(timeElapsed)")
+        let fillerWords = ["um","uh", "umm","basically", "like", "okay", "well", "hmm","Actually", "Seriously", "So"]
+        var fillerWordsStr = ""
+        for filler in fillerWords{
+            if freqDictionary[filler.lowercased()] != nil{
+                if fillerWordsStr == ""{
+                    fillerWordsStr = "\n\nYou used filler words like: "
+                }
+                var fillerAddStr = "\n  \(filler): \(freqDictionary[filler.lowercased()]!) time"
+                if freqDictionary[filler.lowercased()]! > 1{
+                    fillerAddStr += "s"
+                }
+                fillerWordsStr += fillerAddStr
+            }
+        }
+        if fillerWordsStr == ""{
+            fillerWordsStr = "\nGood Job!  Your speech was free of Filler words\n"
+        }
         
-        var fullTextArr = fullText.characters.split{$0 == " "}.map(String.init)
-        var analysisText = "Great Speech\n"
-        let speechWordCount = "\nYour Speech was a total of:\n  \(fullTextArr.count) Words\n"
-        let speechTime = "\nYour total speech time was:\n  2 minutes and 5 seconds\n"
-        
-        
-        analysisText = analysisText + speechWordCount + speechTime
+        analysisText = analysisText + speechWordCount + speechTime + fillerWordsStr
         
         let speechResultsVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SpeechResultsVC") as! SpeechResultsViewController
         
@@ -291,30 +382,30 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
         titleLabel.textAlignment = .center
         speechResultsView.addSubview(titleLabel)
         
-        let textView = UITextView(frame: CGRect(x: 0, y: 70, width: speechResultsView.frame.width, height: speechResultsView.frame.height - 90))
+        let textView = UITextView(frame: CGRect(x: 10, y: 70, width: speechResultsView.frame.width - 20, height: speechResultsView.frame.height - 90))
+        textView.font = UIFont(name: "Panton-Regular", size: 20)
         textView.allowsEditingTextAttributes = false
         textView.isSelectable = true
-        
-        
-        
+        textView.text = analysisText
+        speechResultsView.addSubview(textView)
         
         self.view.addSubview(speechResultsView)
         UIView.animate(withDuration: 1.0) {
             speechResultsView.alpha = 1.0
-//            speechResultsView.center = CGPoint(x: speechResultsView.center.x, y: speechResultsView.center.y + 50)
+            //            speechResultsView.center = CGPoint(x: speechResultsView.center.x, y: speechResultsView.center.y + 50)
             
         }
         
         
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

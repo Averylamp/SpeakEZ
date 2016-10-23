@@ -57,5 +57,7 @@
 	</array>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>For Speech Analytics</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>For Speech Analytics</string>
 </dict>
 </plist>
