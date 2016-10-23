@@ -24,6 +24,8 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
     
     @IBOutlet weak var interviewQuestionLabelHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var startButton: UIButton!
+    
     @IBOutlet weak var interviewQuestionLabel: UILabel!
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -181,10 +183,13 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
             if button.titleLabel?.text == "Start"{
                 startTime = CFAbsoluteTimeGetCurrent()
                 if speechSystem == .Microsoft{
+                    print("Started MICROSOFT")
                     microsoftSpeechAnalyzer.startButton_Click(nil)
                 }else if speechSystem == .Google{
+                    print("Started GOOGLE")
                     googleSpeechAnalyzer.recordAudio(nil)
                 }else if speechSystem == .Apple{
+                    print("Started APPLE")
                     appleSpeechAnalyzer.startSpeech()
                 }
                 shouldEnd = false
@@ -198,11 +203,11 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
                 button.backgroundColor = UIColor(red: 0.0 / 254.0, green: 126.0 / 255.0, blue: 11.0/255.0, alpha: 1.0)
                 button.setTitle("Start", for: .normal)
                 if speechSystem == .Microsoft{
-                    if microsoftSpeechAnalyzer.inProgress == false{
+                    if microsoftSpeechAnalyzer.inProgress == false && !skipTextAnalysis{
                         startTextAnalysis()
                     }
                 }else if speechSystem == .Google{
-                    if !SpeechRecognitionService.sharedInstance().isStreaming(){
+                    if !SpeechRecognitionService.sharedInstance().isStreaming() && !skipTextAnalysis{
                         startTextAnalysis()
                     }else{
                         googleSpeechAnalyzer.stopAudio(nil)
@@ -211,13 +216,13 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
                         })
                     }
                 }else if speechSystem == .Apple{
-                    if !appleSpeechAnalyzer.audioEngine.isRunning{
+                    if !appleSpeechAnalyzer.audioEngine.isRunning && !skipTextAnalysis{
                         startTextAnalysis()
                     }
                 }
                 
             }
-            
+            skipTextAnalysis = false
         }
         
     }
@@ -318,7 +323,7 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
         print("Error Apple Recieved - \(error)")
     }
     
-    // MARK : - Text Analysis
+    // MARK: - Text Analysis
     var progressHUD = MBProgressHUD()
     var analysisText = ""
     var speechWordCount = ""
@@ -328,6 +333,10 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
     var textView: UITextView = UITextView()
     func startTextAnalysis(){
         print("Start Text Analysis")
+        if speechResultsView != nil {
+            speechResultsView!.removeFromSuperview()
+            MBProgressHUD.hide(for: self.view, animated: true)
+        }
         analysisText = ""
         speechWordCount = ""
         speechTime = ""
@@ -481,31 +490,31 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
         
         speechResultsVC.view.frame =   CGRect(x: 40, y: 80, width: self.view.frame.width - 80, height: self.view.frame.height - 160)
         speechResultsView = speechResultsVC.view!
-        speechResultsView.alpha = 0.0
+        speechResultsView!.alpha = 0.0
         
         
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: speechResultsView.frame.width, height: 50))
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: speechResultsView!.frame.width, height: 50))
         titleLabel.font = UIFont(name: "Panton-SemiBold", size: 26)
         titleLabel.text = "Nice Work!"
         titleLabel.textAlignment = .center
-        speechResultsView.addSubview(titleLabel)
+        speechResultsView!.addSubview(titleLabel)
         
-        textView = UITextView(frame: CGRect(x: 10, y: 70, width: speechResultsView.frame.width - 20, height: speechResultsView.frame.height - 90))
+        textView = UITextView(frame: CGRect(x: 10, y: 70, width: speechResultsView!.frame.width - 20, height: speechResultsView!.frame.height - 90))
         textView.font = UIFont(name: "Panton-Regular", size: 20)
         textView.isSelectable = true
         textView.isEditable = false
         textView.text = analysisText
-        speechResultsView.addSubview(textView)
+        speechResultsView!.addSubview(textView)
         
-        let hideButton = UIButton(frame: CGRect(x: speechResultsView.frame.width - 50, y: 0, width: 50, height: 50))
+        let hideButton = UIButton(frame: CGRect(x: speechResultsView!.frame.width - 50, y: 0, width: 50, height: 50))
         hideButton.setImage(UIImage(named:"cancel"), for: .normal)
         hideButton.addTarget(self, action: #selector(AnalysisViewController.closeSpeechAnalytics), for: .touchUpInside)
-        speechResultsView.addSubview(hideButton)
+        speechResultsView!.addSubview(hideButton)
         
         
-        self.view.addSubview(speechResultsView)
+        self.view.addSubview(speechResultsView!)
         UIView.animate(withDuration: 1.0) {
-            self.speechResultsView.alpha = 1.0
+            self.speechResultsView!.alpha = 1.0
             //            speechResultsView.center = CGPoint(x: speechResultsView.center.x, y: speechResultsView.center.y + 50)
             
         }
@@ -513,15 +522,16 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
         
     }
     
-    var speechResultsView: UIView = UIView()
+    var speechResultsView: UIView? = UIView()
     
     func closeSpeechAnalytics(){
         UIView.animate(withDuration: 1.0, animations: {
-            self.speechResultsView.center.y = self.speechResultsView.center.y - 50
-            self.speechResultsView.alpha = 0.0
+            self.speechResultsView!.center.y = self.speechResultsView!.center.y - 50
+            self.speechResultsView!.alpha = 0.0
             
             }) { (finished) in
-                self.speechResultsView.removeFromSuperview()
+                self.speechResultsView!.removeFromSuperview()
+                self.speechResultsView = nil
         }
         MBProgressHUD.hide(for: self.view, animated: true)
         
@@ -533,11 +543,20 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
         textView.text = analysisText
     }
     
+    
+    // MARK: - Settings
     var settingsView = UIView()
     
+    var skipTextAnalysis = false
     @IBAction func changeRecognitionSettings(_ sender: AnyObject) {
-        
+        if startButton.titleLabel?.text == "End"{
+            skipTextAnalysis = true
+            startClicked(startButton)
+        }
+        settingsView.removeFromSuperview()
         settingsView = UIView(frame: CGRect(x: 40, y: 100, width: self.view.frame.width - 80, height: self.view.frame.height - 200))
+        settingsView.backgroundColor = UIColor(red: 0.616, green: 0.718, blue: 0.965, alpha: 1.00)
+        settingsView.layer.cornerRadius = 10
         self.view.addSubview(settingsView)
         settingsView.alpha = 0.0
         settingsView.center.y = settingsView.center.y - 50
@@ -560,11 +579,35 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
         self.settingsView.addSubview(segLabel)
         
         let segmentedControl = UISegmentedControl(items: ["Microsoft", "Apple", "Google"])
-        segmentedControl.frame = CGRect(x:10, y:90, width: settingsView.frame.width, height:35)
+        segmentedControl.frame = CGRect(x:10, y:95, width: settingsView.frame.width - 20, height:35)
+        segmentedControl.tintColor = UIColor.white
         segmentedControl.addTarget(self, action: #selector(AnalysisViewController.recogChanged(segmentedControl:)), for: .valueChanged)
         self.settingsView.addSubview(segmentedControl)
         
+        switch speechSystem {
+        case .Microsoft:
+            segmentedControl.selectedSegmentIndex = 0
+        case .Apple:
+            segmentedControl.selectedSegmentIndex = 1
+        case .Google:
+            segmentedControl.selectedSegmentIndex = 2
+        default:
+            segmentedControl.selectedSegmentIndex = 1
+        }
+        let dismissButton = UIButton(frame: CGRect(x: settingsView.frame.width - 40,y: 5,width: 35,height: 35))
+        dismissButton.setImage(UIImage(named: "cancel"), for: .normal)
+        self.settingsView.addSubview(dismissButton)
+        dismissButton.addTarget(self, action: #selector(AnalysisViewController.dismissSettings), for: .touchUpInside)
         
+    }
+    
+    func dismissSettings(){
+        UIView.animate(withDuration: 1.0, animations: { 
+            self.settingsView.alpha = 0.0
+            self.settingsView.center.y = self.settingsView.center.y - 50
+            }) { (finished) in
+                self.settingsView.removeFromSuperview()
+        }
     }
     
     func recogChanged(segmentedControl : UISegmentedControl) {
@@ -576,10 +619,13 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             print("Switch to Microsoft")
+            speechSystem = .Microsoft
         case 1:
             print("Switch to Apple")
+            speechSystem = .Apple
         case 2:
             print("Switch to Google")
+            speechSystem = .Google
         default:
             print("Something went wrong")
         }
