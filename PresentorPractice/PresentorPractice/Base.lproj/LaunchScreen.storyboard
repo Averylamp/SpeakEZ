@@ -31,7 +31,7 @@
                                     <constraint firstAttribute="width" secondItem="Oc7-kl-rOz" secondAttribute="height" multiplier="1:1" id="RpX-LR-5z0"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Presentor Practice" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wf-wP-UKn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speak EZ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wf-wP-UKn">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="8oe-z7-aOF"/>
                                 </constraints>

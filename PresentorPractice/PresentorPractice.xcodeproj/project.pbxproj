@@ -29,7 +29,6 @@
 		BB15D0121DBB2AB00044C1C6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB15D0111DBB2AB00044C1C6 /* AVFoundation.framework */; };
 		BB15D0141DBB2BE30044C1C6 /* ModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0131DBB2BE30044C1C6 /* ModeViewController.swift */; };
 		BB15D0161DBB2FE80044C1C6 /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0151DBB2FE80044C1C6 /* AnalysisViewController.swift */; };
-		BB15D0731DBB30A40044C1C6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB15D05F1DBB30A40044C1C6 /* Info.plist */; };
 		BB15D0741DBB30A40044C1C6 /* LTCharacterDiffResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0601DBB30A40044C1C6 /* LTCharacterDiffResult.swift */; };
 		BB15D0751DBB30A40044C1C6 /* LTCharacterLimbo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0611DBB30A40044C1C6 /* LTCharacterLimbo.swift */; };
 		BB15D0761DBB30A40044C1C6 /* LTEasing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15D0621DBB30A40044C1C6 /* LTEasing.swift */; };
@@ -123,7 +122,6 @@
 		BB15D0111DBB2AB00044C1C6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BB15D0131DBB2BE30044C1C6 /* ModeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeViewController.swift; sourceTree = "<group>"; };
 		BB15D0151DBB2FE80044C1C6 /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
-		BB15D05F1DBB30A40044C1C6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB15D0601DBB30A40044C1C6 /* LTCharacterDiffResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTCharacterDiffResult.swift; sourceTree = "<group>"; };
 		BB15D0611DBB30A40044C1C6 /* LTCharacterLimbo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTCharacterLimbo.swift; sourceTree = "<group>"; };
 		BB15D0621DBB30A40044C1C6 /* LTEasing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTEasing.swift; sourceTree = "<group>"; };
@@ -308,7 +306,6 @@
 		BB15D05E1DBB30A40044C1C6 /* LTMorphingLabel */ = {
 			isa = PBXGroup;
 			children = (
-				BB15D05F1DBB30A40044C1C6 /* Info.plist */,
 				BB15D0601DBB30A40044C1C6 /* LTCharacterDiffResult.swift */,
 				BB15D0611DBB30A40044C1C6 /* LTCharacterLimbo.swift */,
 				BB15D0621DBB30A40044C1C6 /* LTEasing.swift */,
@@ -492,7 +489,6 @@
 				BB15CFC41DBB13E90044C1C6 /* Main.storyboard in Resources */,
 				BB15D0811DBB30A40044C1C6 /* Fire.png in Resources */,
 				BB15D0061DBB22180044C1C6 /* Panton-ExtraBold.otf in Resources */,
-				BB15D0731DBB30A40044C1C6 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

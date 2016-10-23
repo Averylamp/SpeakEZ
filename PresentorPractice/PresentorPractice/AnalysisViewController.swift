@@ -29,17 +29,18 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
     @IBOutlet weak var scrollView: UIScrollView!
     
     var fullText: String = ""
-    var speechAnalyzer = SpeechController()
+    var microsoftSpeechAnalyzer = SpeechController()
     var googleSpeechAnalyzer = GoogleSpeechController()
     var appleSpeechAnalyzer = AppleSpeechController()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        speechAnalyzer.delegate = self
+        microsoftSpeechAnalyzer.delegate = self
         googleSpeechAnalyzer.delegate = self
         appleSpeechAnalyzer.delegate = self
         appleSpeechAnalyzer.setupRecognizer()
+        
         
         self.delay(0.5) {
             switch self.state{
@@ -180,7 +181,7 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
             if button.titleLabel?.text == "Start"{
                 startTime = CFAbsoluteTimeGetCurrent()
                 if speechSystem == .Microsoft{
-                    speechAnalyzer.startButton_Click(nil)
+                    microsoftSpeechAnalyzer.startButton_Click(nil)
                 }else if speechSystem == .Google{
                     googleSpeechAnalyzer.recordAudio(nil)
                 }else if speechSystem == .Apple{
@@ -197,7 +198,7 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
                 button.backgroundColor = UIColor(red: 0.0 / 254.0, green: 126.0 / 255.0, blue: 11.0/255.0, alpha: 1.0)
                 button.setTitle("Start", for: .normal)
                 if speechSystem == .Microsoft{
-                    if speechAnalyzer.inProgress == false{
+                    if microsoftSpeechAnalyzer.inProgress == false{
                         startTextAnalysis()
                     }
                 }else if speechSystem == .Google{
@@ -228,7 +229,7 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
         //        print("Final Recognition \(phrase.displayText)")
         self.addStringToTotalText(string: phrase.displayText)
         if !shouldEnd{
-            speechAnalyzer.startButton_Click(nil)
+            microsoftSpeechAnalyzer.startButton_Click(nil)
         }else{
             startTextAnalysis()
         }
@@ -245,7 +246,7 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
         partialTextLabel.text = error
         if !shouldEnd{
             self.delay(1.0, closure: {
-                self.speechAnalyzer.startButton_Click(nil)
+                self.microsoftSpeechAnalyzer.startButton_Click(nil)
             })
         }else{
             
@@ -319,8 +320,19 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
     
     // MARK : - Text Analysis
     var progressHUD = MBProgressHUD()
-    
+    var analysisText = ""
+    var speechWordCount = ""
+    var speechTime = ""
+    var fillerWordsStr = ""
+    var sentimentAnalysisStr = ""
+    var textView: UITextView = UITextView()
     func startTextAnalysis(){
+        print("Start Text Analysis")
+        analysisText = ""
+        speechWordCount = ""
+        speechTime = ""
+        fillerWordsStr = ""
+        sentimentAnalysisStr = ""
         
         progressHUD = MBProgressHUD.showAdded(to: self.view, animated: true)
         progressHUD.mode = .indeterminate
@@ -345,12 +357,12 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
             }
         }
         print(freqDictionary)
-        var analysisText = "Great Speech!"
-        let speechWordCount = "\n\nYour Speech was a total of:\n  \(fullTextArr.count) Words"
-        let speechTime = "\n\nYour total speech time was:\n  \(Int(timeElapsed) /  60) minutes and \(Int(timeElapsed) % 60) seconds"
+        analysisText = "Great Speech!"
+        speechWordCount = "\n\nYour Speech was a total of:\n  \(fullTextArr.count) Words"
+        speechTime = "\n\nYour total speech time was:\n  \(Int(timeElapsed) /  60) minutes and \(Int(timeElapsed) % 60) seconds"
         print("TIME ELAPSED \(timeElapsed)")
         let fillerWords = ["um","uh", "umm","basically", "like", "okay", "well", "hmm","Actually", "Seriously", "So"]
-        var fillerWordsStr = ""
+        fillerWordsStr = ""
         for filler in fillerWords{
             if freqDictionary[filler.lowercased()] != nil{
                 if fillerWordsStr == ""{
@@ -364,15 +376,111 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
             }
         }
         if fillerWordsStr == ""{
-            fillerWordsStr = "\nGood Job!  Your speech was free of Filler words\n"
+            fillerWordsStr = "\n\nGood Job!  Your speech was free of Filler words\n"
         }
         
-        analysisText = analysisText + speechWordCount + speechTime + fillerWordsStr
+        // sentiment analysis
+        var fullSentDict = [String:Array<[String:String]>]()
+        var documentsArr = [[String:String]]()
+        let allwords = freqDictionary.keys
+        var id = 1
+        for word in allwords{
+            var innerDict = [String:String]()
+            innerDict["id"] = "\(word)"
+            innerDict["text"] = word
+            innerDict["language"] = "en"
+            documentsArr.append(innerDict)
+            id += 1
+        }
+        fullSentDict["documents"] = documentsArr
+        var bodyData:Data?
+        do{
+            
+        try bodyData = JSONSerialization.data(withJSONObject: fullSentDict, options: [])
+        }catch{
+            print("JSON Serialization failed")
+        }
+        
+//        print("JSON - \(NSString(data: bodyData!, encoding: String.Encoding.utf8.rawValue))")
+//        print("\(NSString(data: bodyData!, encoding: ))")
+        var request = URLRequest(url: URL(string: "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment")!)
+        request.httpMethod = "POST"
+        request.setValue("c0ad10de41184a0592cbc6afee31ce7f", forHTTPHeaderField: "Ocp-Apim-Subscription-Key")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = bodyData
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            print("Response RECIEVED")
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString)")
+            let json = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as! [String:Array<[String:AnyObject]>]
+            let docArray = json["documents"] as Array<[String:AnyObject]>!
+            var allScores = [Double]()
+            for dict in docArray!{
+                let score = dict["score"]!.doubleValue
+                allScores.append(score!)
+            }
+            allScores.sort()
+            var negWords = [String](repeating: "", count: 4)
+            var posWords = [String](repeating: "", count: 4)
+            var negValues = Array(allScores[0..<4])
+            var posValues = Array(Array(allScores[allScores.count - 4..<allScores.count]).reversed())
+            for dict in docArray!{
+                let score = dict["score"]!.doubleValue
+                allScores.append(score!)
+                if let index = negValues.index(of: score!) {
+                    negWords[index] = dict["id"] as! String
+                }
+                if let index = posValues.index(of: score!) {
+                    posWords[index] = "hi"
+                    posWords[index] = dict["id"] as! String
+                }
+            }
+            print(posValues)
+            print(posWords)
+            print(negValues)
+            print(negWords)
+            let doubleFormat = 0.3
+            self.sentimentAnalysisStr = "\n\nSentiment Analysis"
+            var positiveWords = "\n Your most positive words are:\n   "
+            for word in posWords{
+                positiveWords += word + ", "
+            }
+            positiveWords += "\n With scores of:\n   "
+            for score in posValues{
+                positiveWords += String(format: "%.3f, ", score)
+            }
+            
+            var negativeWords = "\n\nYour most negative words are:\n   "
+            for word in negWords{
+                negativeWords += word + ", "
+            }
+            negativeWords += "\n With scores of:\n   "
+            for score in negValues{
+                negativeWords += String(format: "%.3f, ",score)
+            }
+            self.sentimentAnalysisStr += positiveWords + negativeWords
+            self.delay(0.0, closure: {
+                self.finishSpeechAnalyticsFadeIn()
+            })
+        }
+        task.resume()
+        
+        analysisText = analysisText + speechWordCount + speechTime + fillerWordsStr + self.sentimentAnalysisStr
         
         let speechResultsVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SpeechResultsVC") as! SpeechResultsViewController
         
         speechResultsVC.view.frame =   CGRect(x: 40, y: 80, width: self.view.frame.width - 80, height: self.view.frame.height - 160)
-        let speechResultsView = speechResultsVC.view!
+        speechResultsView = speechResultsVC.view!
         speechResultsView.alpha = 0.0
         
         
@@ -382,22 +490,104 @@ class AnalysisViewController: UIViewController, speechFeedbackProtocall, googleS
         titleLabel.textAlignment = .center
         speechResultsView.addSubview(titleLabel)
         
-        let textView = UITextView(frame: CGRect(x: 10, y: 70, width: speechResultsView.frame.width - 20, height: speechResultsView.frame.height - 90))
+        textView = UITextView(frame: CGRect(x: 10, y: 70, width: speechResultsView.frame.width - 20, height: speechResultsView.frame.height - 90))
         textView.font = UIFont(name: "Panton-Regular", size: 20)
-        textView.allowsEditingTextAttributes = false
         textView.isSelectable = true
+        textView.isEditable = false
         textView.text = analysisText
         speechResultsView.addSubview(textView)
         
+        let hideButton = UIButton(frame: CGRect(x: speechResultsView.frame.width - 50, y: 0, width: 50, height: 50))
+        hideButton.setImage(UIImage(named:"cancel"), for: .normal)
+        hideButton.addTarget(self, action: #selector(AnalysisViewController.closeSpeechAnalytics), for: .touchUpInside)
+        speechResultsView.addSubview(hideButton)
+        
+        
         self.view.addSubview(speechResultsView)
         UIView.animate(withDuration: 1.0) {
-            speechResultsView.alpha = 1.0
+            self.speechResultsView.alpha = 1.0
             //            speechResultsView.center = CGPoint(x: speechResultsView.center.x, y: speechResultsView.center.y + 50)
             
         }
         
         
     }
+    
+    var speechResultsView: UIView = UIView()
+    
+    func closeSpeechAnalytics(){
+        UIView.animate(withDuration: 1.0, animations: {
+            self.speechResultsView.center.y = self.speechResultsView.center.y - 50
+            self.speechResultsView.alpha = 0.0
+            
+            }) { (finished) in
+                self.speechResultsView.removeFromSuperview()
+        }
+        MBProgressHUD.hide(for: self.view, animated: true)
+        
+    }
+    
+    
+    func finishSpeechAnalyticsFadeIn(){
+       let analysisText = "Great Speech!" + speechWordCount + speechTime + fillerWordsStr + self.sentimentAnalysisStr
+        textView.text = analysisText
+    }
+    
+    var settingsView = UIView()
+    
+    @IBAction func changeRecognitionSettings(_ sender: AnyObject) {
+        
+        settingsView = UIView(frame: CGRect(x: 40, y: 100, width: self.view.frame.width - 80, height: self.view.frame.height - 200))
+        self.view.addSubview(settingsView)
+        settingsView.alpha = 0.0
+        settingsView.center.y = settingsView.center.y - 50
+        UIView.animate(withDuration: 1.0) { 
+            self.settingsView.alpha = 1.0
+            self.settingsView.center.y = self.settingsView.center.y + 50
+        }
+        
+        
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: settingsView.frame.width, height: 50))
+        titleLabel.font = UIFont(name: "Panton-SemiBold", size: 28)
+        titleLabel.textAlignment = .center
+        titleLabel.text = "Settings"
+        self.settingsView.addSubview(titleLabel)
+        
+        let segLabel = UILabel(frame: CGRect(x:0, y:60, width: settingsView.frame.width, height: 30))
+        segLabel.text = "Speech Recognition API"
+        segLabel.textAlignment = .center
+        segLabel.font = UIFont(name: "Panton-Regular", size: 20)
+        self.settingsView.addSubview(segLabel)
+        
+        let segmentedControl = UISegmentedControl(items: ["Microsoft", "Apple", "Google"])
+        segmentedControl.frame = CGRect(x:10, y:90, width: settingsView.frame.width, height:35)
+        segmentedControl.addTarget(self, action: #selector(AnalysisViewController.recogChanged(segmentedControl:)), for: .valueChanged)
+        self.settingsView.addSubview(segmentedControl)
+        
+        
+    }
+    
+    func recogChanged(segmentedControl : UISegmentedControl) {
+        print("Seg Changed - \(segmentedControl.selectedSegmentIndex)")
+        if microsoftSpeechAnalyzer.inProgress {
+            
+        }
+        
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            print("Switch to Microsoft")
+        case 1:
+            print("Switch to Apple")
+        case 2:
+            print("Switch to Google")
+        default:
+            print("Something went wrong")
+        }
+    }
+    
+    
+    
+    
     /*
      // MARK: - Navigation
      

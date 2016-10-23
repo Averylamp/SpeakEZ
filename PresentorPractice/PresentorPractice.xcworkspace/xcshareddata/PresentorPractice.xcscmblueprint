@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1BED90BD7A92BA01088CDCF52BF0746F3E5DFB42",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "1BED90BD7A92BA01088CDCF52BF0746F3E5DFB42" : 9223372036854775807,
+    "67620B5EFA902936DF04070AF595B76AB0333747" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C3B9E342-C5DA-4D86-B23E-63C9F8684FF8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "1BED90BD7A92BA01088CDCF52BF0746F3E5DFB42" : "Presentor%20Practice\/",
+    "67620B5EFA902936DF04070AF595B76AB0333747" : "Presentor%20Practice\/PresentorPractice\/Alamofire\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PresentorPractice",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PresentorPractice\/PresentorPractice.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Averylamp\/Presentor-Practice.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1BED90BD7A92BA01088CDCF52BF0746F3E5DFB42"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Alamofire\/Alamofire.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "67620B5EFA902936DF04070AF595B76AB0333747"
+    }
+  ]
+}
