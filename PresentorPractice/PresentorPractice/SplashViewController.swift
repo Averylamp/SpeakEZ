@@ -27,7 +27,7 @@ class SplashViewController: UIViewController {
         myUtterance.voice = AVSpeechSynthesisVoice(language: speechSettings.language.rawValue)
         myUtterance.rate = Float(speechSettings.rate.rawValue)!
         self.delay(1.0) {
-//            self.synth.speak(myUtterance)
+            self.synth.speak(myUtterance)
         }
 
         // Do any additional setup after loading the view.
