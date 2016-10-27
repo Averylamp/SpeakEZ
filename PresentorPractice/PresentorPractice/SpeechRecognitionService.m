@@ -34,6 +34,12 @@
 
 @implementation SpeechRecognitionService
 
+-(NSDictionary*)settings {
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"settings" ofType:@"plist"];
+    NSDictionary* settings = [[NSDictionary alloc] initWithContentsOfFile:path];
+    return settings;
+}
+
 + (instancetype) sharedInstance {
     static SpeechRecognitionService *instance = nil;
     if (!instance) {
@@ -56,7 +62,7 @@
                                                       }];
         
         // authenticate using an API key obtained from the Google Cloud Console
-        _call.requestHeaders[@"X-Goog-Api-Key"] = API_KEY;
+        _call.requestHeaders[@"X-Goog-Api-Key"] = [self.settings objectForKey:(@"googleAPIKey")];
         // if the API key has a bundle ID restriction, specify the bundle ID like this
         _call.requestHeaders[@"X-Ios-Bundle-Identifier"] = [[NSBundle mainBundle] bundleIdentifier];
         
